@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (sidebarToggle && sidebar) {
     sidebarToggle.addEventListener("click", () => {
-      sidebar.classList.toggle("-translate-x-full");
+      sidebar.classList.toggle("sidebar-show");
     });
   }
 
@@ -58,9 +58,9 @@ function initCharts() {
   }
 
   // Category Chart
-  const categoryCtx = document.getElementById("categoryChart");
-  if (categoryCtx) {
-    new Chart(categoryCtx, {
+  const categoriesCtx = document.getElementById("categoriesChart");
+  if (categoriesCtx) {
+    new Chart(categoriesCtx, {
       type: "doughnut",
       data: {
         labels: ["Smartphones", "Laptops", "Tablets", "Accessories"],

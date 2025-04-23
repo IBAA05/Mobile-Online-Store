@@ -2,583 +2,111 @@
   "products": [
     {
       "id": 1,
-      "name": "iPhone 15 Pro Max",
+      "name": "iPhone 13 Pro",
       "brand": "Apple",
-      "price": 1299.99,
       "category": "Smartphones",
-      "specs": {
-        "display": "6.7-inch Super Retina XDR",
-        "processor": "A17 Pro chip",
-        "ram": "8GB",
-        "storage": "256GB",
-        "camera": "48MP + 12MP + 12MP",
-        "battery": "4422mAh"
-      },
-      "quantity": 50,
+      "price": 999.99,
+      "quantity": 25,
+      "description": "Latest iPhone with advanced camera system",
       "images": [
-        "data:image/jpeg;base64,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",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8b4"
+        "https://placehold.co/400x400/0ea5e9/ffffff?text=iPhone+13+Pro"
       ]
     },
     {
       "id": 2,
-      "name": "Samsung Galaxy S24 Ultra",
+      "name": "Samsung Galaxy S21",
       "brand": "Samsung",
-      "price": 1199.99,
       "category": "Smartphones",
-      "specs": {
-        "display": "6.8-inch Dynamic AMOLED 2X",
-        "processor": "Snapdragon 8 Gen 3",
-        "ram": "12GB",
-        "storage": "256GB",
-        "camera": "200MP + 12MP + 10MP + 10MP",
-        "battery": "5000mAh"
-      },
-      "quantity": 45,
-      "images": [
-        "https://images.unsplash.com/photo-1706463629335-d92264bbfd6f",
-        "https://images.unsplash.com/photo-1706463629335-d92264bbfd6g"
-      ]
+      "price": 799.99,
+      "quantity": 18,
+      "description": "Powerful Android smartphone with great camera",
+      "images": ["https://placehold.co/400x400/0ea5e9/ffffff?text=Galaxy+S21"]
     },
     {
       "id": 3,
-      "name": "Google Pixel 8 Pro",
-      "brand": "Google",
-      "price": 999.99,
-      "category": "Smartphones",
-      "specs": {
-        "display": "6.7-inch LTPO OLED",
-        "processor": "Google Tensor G3",
-        "ram": "12GB",
-        "storage": "128GB",
-        "camera": "50MP + 48MP + 48MP",
-        "battery": "5050mAh"
-      },
-      "quantity": 30,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8b5",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8b6"
-      ]
+      "name": "MacBook Pro 16-inch",
+      "brand": "Apple",
+      "category": "Laptops",
+      "price": 2399.99,
+      "quantity": 10,
+      "description": "High-performance laptop for professionals",
+      "images": ["https://placehold.co/400x400/0ea5e9/ffffff?text=MacBook+Pro"]
     },
     {
       "id": 4,
-      "name": "OnePlus 12",
-      "brand": "OnePlus",
-      "price": 799.99,
-      "category": "Smartphones",
-      "specs": {
-        "display": "6.82-inch LTPO AMOLED",
-        "processor": "Snapdragon 8 Gen 3",
-        "ram": "12GB",
-        "storage": "256GB",
-        "camera": "50MP + 48MP + 64MP",
-        "battery": "5400mAh"
-      },
-      "quantity": 35,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8b7",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8b8"
-      ]
+      "name": "Dell XPS 15",
+      "brand": "Dell",
+      "category": "Laptops",
+      "price": 1699.99,
+      "quantity": 12,
+      "description": "Thin and powerful Windows laptop",
+      "images": ["https://placehold.co/400x400/0ea5e9/ffffff?text=Dell+XPS+15"]
     },
     {
       "id": 5,
-      "name": "Xiaomi 14 Pro",
-      "brand": "Xiaomi",
-      "price": 899.99,
-      "category": "Smartphones",
-      "specs": {
-        "display": "6.73-inch LTPO AMOLED",
-        "processor": "Snapdragon 8 Gen 3",
-        "ram": "12GB",
-        "storage": "256GB",
-        "camera": "50MP + 50MP + 50MP",
-        "battery": "4880mAh"
-      },
-      "quantity": 40,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8b9",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8c0"
-      ]
+      "name": "iPad Pro 12.9-inch",
+      "brand": "Apple",
+      "category": "Tablets",
+      "price": 1099.99,
+      "quantity": 15,
+      "description": "Powerful tablet with M1 chip",
+      "images": ["https://placehold.co/400x400/0ea5e9/ffffff?text=iPad+Pro"]
     },
     {
       "id": 6,
-      "name": "AirPods Pro 2",
+      "name": "AirPods Pro",
       "brand": "Apple",
-      "price": 249.99,
       "category": "Accessories",
-      "specs": {
-        "type": "Wireless Earbuds",
-        "battery": "6 hours (earbuds), 30 hours (case)",
-        "features": "Active Noise Cancellation, Spatial Audio",
-        "connectivity": "Bluetooth 5.3"
-      },
-      "quantity": 100,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8c1",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8c2"
-      ]
+      "price": 249.99,
+      "quantity": 30,
+      "description": "Wireless earbuds with noise cancellation",
+      "images": ["https://placehold.co/400x400/0ea5e9/ffffff?text=AirPods+Pro"]
     },
     {
       "id": 7,
-      "name": "Galaxy Buds 2 Pro",
+      "name": "Samsung Galaxy Watch 4",
       "brand": "Samsung",
-      "price": 229.99,
       "category": "Accessories",
-      "specs": {
-        "type": "Wireless Earbuds",
-        "battery": "5 hours (earbuds), 18 hours (case)",
-        "features": "Active Noise Cancellation, 360 Audio",
-        "connectivity": "Bluetooth 5.3"
-      },
-      "quantity": 85,
+      "price": 249.99,
+      "quantity": 20,
+      "description": "Advanced smartwatch with health tracking",
       "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8c3",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8c4"
+        "https://placehold.co/400x400/0ea5e9/ffffff?text=Galaxy+Watch+4"
       ]
     },
     {
       "id": 8,
-      "name": "Apple Watch Series 9",
-      "brand": "Apple",
-      "price": 399.99,
-      "category": "Wearables",
-      "specs": {
-        "display": "Always-On Retina display",
-        "processor": "S9 chip",
-        "battery": "18 hours",
-        "features": "ECG, Blood Oxygen, GPS",
-        "water_resistance": "50m"
-      },
-      "quantity": 60,
+      "name": "Sony WH-1000XM4",
+      "brand": "Sony",
+      "category": "Accessories",
+      "price": 349.99,
+      "quantity": 14,
+      "description": "Premium noise-canceling headphones",
       "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8c5",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8c6"
+        "https://placehold.co/400x400/0ea5e9/ffffff?text=Sony+WH-1000XM4"
       ]
     },
     {
       "id": 9,
-      "name": "Galaxy Watch 6 Pro",
-      "brand": "Samsung",
-      "price": 449.99,
-      "category": "Wearables",
-      "specs": {
-        "display": "1.4-inch Super AMOLED",
-        "processor": "Exynos W920",
-        "battery": "590mAh",
-        "features": "ECG, Blood Pressure, GPS",
-        "water_resistance": "50m"
-      },
-      "quantity": 55,
+      "name": "Surface Laptop 4",
+      "brand": "Microsoft",
+      "category": "Laptops",
+      "price": 1299.99,
+      "quantity": 8,
+      "description": "Sleek and powerful Windows laptop",
       "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8c7",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8c8"
+        "https://placehold.co/400x400/0ea5e9/ffffff?text=Surface+Laptop+4"
       ]
     },
     {
       "id": 10,
-      "name": "iPad Pro 12.9",
-      "brand": "Apple",
-      "price": 1099.99,
-      "category": "Tablets",
-      "specs": {
-        "display": "12.9-inch Liquid Retina XDR",
-        "processor": "M2 chip",
-        "ram": "8GB",
-        "storage": "256GB",
-        "camera": "12MP + 10MP",
-        "battery": "40.88Wh"
-      },
-      "quantity": 40,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8c9",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8d0"
-      ]
-    },
-    {
-      "id": 11,
-      "name": "Galaxy Tab S9 Ultra",
-      "brand": "Samsung",
-      "price": 1199.99,
-      "category": "Tablets",
-      "specs": {
-        "display": "14.6-inch Dynamic AMOLED 2X",
-        "processor": "Snapdragon 8 Gen 2",
-        "ram": "12GB",
-        "storage": "256GB",
-        "camera": "13MP + 8MP",
-        "battery": "11200mAh"
-      },
-      "quantity": 35,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8d1",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8d2"
-      ]
-    },
-    {
-      "id": 12,
-      "name": "MacBook Pro 16",
-      "brand": "Apple",
-      "price": 2499.99,
-      "category": "Laptops",
-      "specs": {
-        "display": "16.2-inch Liquid Retina XDR",
-        "processor": "M2 Pro",
-        "ram": "16GB",
-        "storage": "512GB",
-        "battery": "100Wh",
-        "ports": "3x Thunderbolt 4, HDMI, SDXC"
-      },
-      "quantity": 25,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8d3",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8d4"
-      ]
-    },
-    {
-      "id": 13,
-      "name": "Galaxy Book 3 Ultra",
-      "brand": "Samsung",
-      "price": 2399.99,
-      "category": "Laptops",
-      "specs": {
-        "display": "16-inch AMOLED",
-        "processor": "Intel Core i9-13900H",
-        "ram": "32GB",
-        "storage": "1TB",
-        "battery": "76Wh",
-        "ports": "2x Thunderbolt 4, HDMI, USB-A"
-      },
-      "quantity": 20,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8d5",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8d6"
-      ]
-    },
-    {
-      "id": 14,
-      "name": "Magic Keyboard",
-      "brand": "Apple",
-      "price": 99.99,
-      "category": "Accessories",
-      "specs": {
-        "type": "Wireless Keyboard",
-        "battery": "1 month",
-        "features": "Backlit keys, Numeric keypad",
-        "connectivity": "Bluetooth"
-      },
-      "quantity": 75,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8d7",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8d8"
-      ]
-    },
-    {
-      "id": 15,
-      "name": "Galaxy SmartTag2",
-      "brand": "Samsung",
-      "price": 29.99,
-      "category": "Accessories",
-      "specs": {
-        "type": "Smart Tracker",
-        "battery": "500 days",
-        "features": "UWB, AR Finding",
-        "connectivity": "Bluetooth 5.3"
-      },
-      "quantity": 120,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8d9",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8e0"
-      ]
-    },
-    {
-      "id": 16,
-      "name": "iPhone 15",
-      "brand": "Apple",
-      "price": 799.99,
-      "category": "Smartphones",
-      "specs": {
-        "display": "6.1-inch Super Retina XDR",
-        "processor": "A16 Bionic",
-        "ram": "6GB",
-        "storage": "128GB",
-        "camera": "48MP + 12MP",
-        "battery": "3349mAh"
-      },
-      "quantity": 65,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8e1",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8e2"
-      ]
-    },
-    {
-      "id": 17,
-      "name": "Galaxy S24+",
-      "brand": "Samsung",
-      "price": 999.99,
-      "category": "Smartphones",
-      "specs": {
-        "display": "6.7-inch Dynamic AMOLED 2X",
-        "processor": "Snapdragon 8 Gen 3",
-        "ram": "12GB",
-        "storage": "256GB",
-        "camera": "50MP + 12MP + 10MP",
-        "battery": "4900mAh"
-      },
-      "quantity": 55,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8e3",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8e4"
-      ]
-    },
-    {
-      "id": 18,
-      "name": "Pixel 8",
+      "name": "Google Pixel 6 Pro",
       "brand": "Google",
-      "price": 699.99,
       "category": "Smartphones",
-      "specs": {
-        "display": "6.2-inch OLED",
-        "processor": "Google Tensor G3",
-        "ram": "8GB",
-        "storage": "128GB",
-        "camera": "50MP + 12MP",
-        "battery": "4575mAh"
-      },
-      "quantity": 45,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8e5",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8e6"
-      ]
-    },
-    {
-      "id": 19,
-      "name": "OnePlus 12R",
-      "brand": "OnePlus",
-      "price": 599.99,
-      "category": "Smartphones",
-      "specs": {
-        "display": "6.78-inch LTPO AMOLED",
-        "processor": "Snapdragon 8 Gen 2",
-        "ram": "8GB",
-        "storage": "128GB",
-        "camera": "50MP + 8MP + 2MP",
-        "battery": "5500mAh"
-      },
-      "quantity": 50,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8e7",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8e8"
-      ]
-    },
-    {
-      "id": 20,
-      "name": "Xiaomi 14",
-      "brand": "Xiaomi",
-      "price": 699.99,
-      "category": "Smartphones",
-      "specs": {
-        "display": "6.36-inch LTPO AMOLED",
-        "processor": "Snapdragon 8 Gen 3",
-        "ram": "8GB",
-        "storage": "256GB",
-        "camera": "50MP + 50MP + 50MP",
-        "battery": "4610mAh"
-      },
-      "quantity": 60,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8e9",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8f0"
-      ]
-    },
-    {
-      "id": 21,
-      "name": "AirPods 3",
-      "brand": "Apple",
-      "price": 179.99,
-      "category": "Accessories",
-      "specs": {
-        "type": "Wireless Earbuds",
-        "battery": "6 hours (earbuds), 30 hours (case)",
-        "features": "Spatial Audio, Adaptive EQ",
-        "connectivity": "Bluetooth 5.0"
-      },
-      "quantity": 90,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8f1",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8f2"
-      ]
-    },
-    {
-      "id": 22,
-      "name": "Galaxy Buds FE",
-      "brand": "Samsung",
-      "price": 99.99,
-      "category": "Accessories",
-      "specs": {
-        "type": "Wireless Earbuds",
-        "battery": "6 hours (earbuds), 21 hours (case)",
-        "features": "Active Noise Cancellation",
-        "connectivity": "Bluetooth 5.2"
-      },
-      "quantity": 110,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8f3",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8f4"
-      ]
-    },
-    {
-      "id": 23,
-      "name": "Apple Watch SE",
-      "brand": "Apple",
-      "price": 249.99,
-      "category": "Wearables",
-      "specs": {
-        "display": "Retina display",
-        "processor": "S8 chip",
-        "battery": "18 hours",
-        "features": "GPS, Heart Rate",
-        "water_resistance": "50m"
-      },
-      "quantity": 70,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8f5",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8f6"
-      ]
-    },
-    {
-      "id": 24,
-      "name": "Galaxy Watch 6",
-      "brand": "Samsung",
-      "price": 299.99,
-      "category": "Wearables",
-      "specs": {
-        "display": "1.3-inch Super AMOLED",
-        "processor": "Exynos W920",
-        "battery": "425mAh",
-        "features": "ECG, Blood Pressure, GPS",
-        "water_resistance": "50m"
-      },
-      "quantity": 65,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8f7",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8f8"
-      ]
-    },
-    {
-      "id": 25,
-      "name": "iPad Air",
-      "brand": "Apple",
-      "price": 599.99,
-      "category": "Tablets",
-      "specs": {
-        "display": "10.9-inch Liquid Retina",
-        "processor": "M1 chip",
-        "ram": "8GB",
-        "storage": "64GB",
-        "camera": "12MP",
-        "battery": "28.6Wh"
-      },
-      "quantity": 55,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e8f9",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e9a0"
-      ]
-    },
-    {
-      "id": 26,
-      "name": "Galaxy Tab S9",
-      "brand": "Samsung",
-      "price": 699.99,
-      "category": "Tablets",
-      "specs": {
-        "display": "11-inch Dynamic AMOLED 2X",
-        "processor": "Snapdragon 8 Gen 2",
-        "ram": "8GB",
-        "storage": "128GB",
-        "camera": "13MP + 8MP",
-        "battery": "8400mAh"
-      },
-      "quantity": 45,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e9a1",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e9a2"
-      ]
-    },
-    {
-      "id": 27,
-      "name": "MacBook Air 15",
-      "brand": "Apple",
-      "price": 1299.99,
-      "category": "Laptops",
-      "specs": {
-        "display": "15.3-inch Liquid Retina",
-        "processor": "M2",
-        "ram": "8GB",
-        "storage": "256GB",
-        "battery": "66.5Wh",
-        "ports": "2x Thunderbolt 4"
-      },
-      "quantity": 30,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e9a3",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e9a4"
-      ]
-    },
-    {
-      "id": 28,
-      "name": "Galaxy Book 3 Pro",
-      "brand": "Samsung",
-      "price": 1399.99,
-      "category": "Laptops",
-      "specs": {
-        "display": "14-inch AMOLED",
-        "processor": "Intel Core i7-1360P",
-        "ram": "16GB",
-        "storage": "512GB",
-        "battery": "63Wh",
-        "ports": "2x Thunderbolt 4, HDMI, USB-A"
-      },
-      "quantity": 25,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e9a5",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e9a6"
-      ]
-    },
-    {
-      "id": 29,
-      "name": "Magic Mouse",
-      "brand": "Apple",
-      "price": 79.99,
-      "category": "Accessories",
-      "specs": {
-        "type": "Wireless Mouse",
-        "battery": "1 month",
-        "features": "Multi-touch surface",
-        "connectivity": "Bluetooth"
-      },
-      "quantity": 80,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e9a7",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e9a8"
-      ]
-    },
-    {
-      "id": 30,
-      "name": "Galaxy SmartTag+",
-      "brand": "Samsung",
-      "price": 39.99,
-      "category": "Accessories",
-      "specs": {
-        "type": "Smart Tracker",
-        "battery": "500 days",
-        "features": "UWB, AR Finding",
-        "connectivity": "Bluetooth 5.1"
-      },
-      "quantity": 100,
-      "images": [
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e9a9",
-        "https://images.unsplash.com/photo-1695048133148-1baf5d89e9b0"
-      ]
+      "price": 899.99,
+      "quantity": 0,
+      "description": "Google's flagship phone with excellent camera",
+      "images": ["https://placehold.co/400x400/0ea5e9/ffffff?text=Pixel+6+Pro"]
     }
   ]
 }

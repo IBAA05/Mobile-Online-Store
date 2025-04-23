@@ -4,39 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechHub Admin - Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="inde.css" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: {
-                50: "#f0f9ff",
-                100: "#e0f2fe",
-                200: "#bae6fd",
-                300: "#7dd3fc",
-                400: "#38bdf8",
-                500: "#0ea5e9",
-                600: "#0284c7",
-                700: "#0369a1",
-                800: "#075985",
-                900: "#0c4a6e",
-              },
-            },
-          },
-        },
-      };
-    </script>
   </head>
-  <body
-    class="bg-gradient-to-br from-gray-200 via-gray-50 to-gray-400 min-h-screen"
-  >
+  <body class="min-h-screen">
     <div class="min-h-screen flex flex-col">
       <!-- Header -->
       <div class="bg-white shadow-md w-full">
@@ -59,25 +34,16 @@
               alt="User"
               class="h-8 rounded-full border"
             />
-            <button
-              class="bg-primary-400 hover:bg-primary-600 transition text-white px-3 text-xs py-2 rounded-md font-semibold shadow"
-            >
-              Logout
-            </button>
+            <button class="btn btn-primary">Logout</button>
           </div>
         </div>
       </div>
       <div class="flex flex-1 overflow-hidden">
         <!-- Sidebar -->
-        <div
-          id="sidebar"
-          class="fixed md:static top-0 left-0 h-full md:h-auto w-64 bg-white shadow-lg z-30 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out flex flex-col border-r border-gray-200"
-        >
-          <div
-            class="flex items-center gap-2 px-4 py-4 border-r-4 border-primary-500"
-          >
+        <div id="sidebar" class="sidebar">
+          <div class="flex items-center gap-2 px-4 py-4">
             <ul class="mt-4 flex-1">
-              <li class="sidebar-button">
+              <li class="sidebar-button active-sidebar">
                 <a href="dashboard.html" class="flex items-center">
                   <i class="fas fa-box mr-2"></i> Dashboard
                 </a>
@@ -109,14 +75,15 @@
         <!-- Sidebar Toggle Button (Mobile) -->
         <button
           id="sidebarToggle"
-          class="md:hidden fixed top-4 left-4 z-40 bg-primary-500 hover:bg-primary-600 transition text-white p-3 rounded-full shadow-lg border-r-2 focus:outline-none"
+          class="p-3 rounded-full bg-primary-500 text-white"
+          style="position: fixed; bottom: 20px; right: 20px; z-index: 40"
         >
           <i class="fas fa-bars text-lg"></i>
         </button>
         <!-- Main Content -->
         <div class="flex-1 overflow-auto p-6">
           <!-- Summary Cards -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="grid grid-cols-3 gap-6 mb-6">
             <!-- Products Card -->
             <div class="bg-white rounded-lg shadow-md p-6">
               <div class="flex items-center justify-between">
@@ -158,11 +125,11 @@
           </div>
 
           <!-- Charts Section -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="grid grid-cols-2 gap-6">
             <!-- Sales Chart -->
             <div class="bg-white rounded-lg shadow-md p-6">
               <h3 class="text-lg font-semibold mb-4">Sales Overview</h3>
-              <div class="h-64">
+              <div style="height: 250px">
                 <canvas id="salesChart"></canvas>
               </div>
             </div>
@@ -170,7 +137,7 @@
             <!-- Product Categories Chart -->
             <div class="bg-white rounded-lg shadow-md p-6">
               <h3 class="text-lg font-semibold mb-4">Product Categories</h3>
-              <div class="h-64">
+              <div style="height: 250px">
                 <canvas id="categoriesChart"></canvas>
               </div>
             </div>
@@ -179,53 +146,6 @@
       </div>
     </div>
 
-    <script>
-      // Initialize Charts
-      document.addEventListener("DOMContentLoaded", function () {
-        // Sales Chart
-        const salesCtx = document.getElementById("salesChart").getContext("2d");
-        new Chart(salesCtx, {
-          type: "line",
-          data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-            datasets: [
-              {
-                label: "Sales",
-                data: [65, 59, 80, 81, 56, 55],
-                borderColor: "#0ea5e9",
-                tension: 0.1,
-                fill: true,
-                backgroundColor: "rgba(14, 165, 233, 0.1)",
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-          },
-        });
-
-        // Categories Chart
-        const categoriesCtx = document
-          .getElementById("categoriesChart")
-          .getContext("2d");
-        new Chart(categoriesCtx, {
-          type: "doughnut",
-          data: {
-            labels: ["Electronics", "Accessories", "Gadgets", "Other"],
-            datasets: [
-              {
-                data: [30, 25, 20, 25],
-                backgroundColor: ["#0ea5e9", "#38bdf8", "#7dd3fc", "#bae6fd"],
-              },
-            ],
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-          },
-        });
-      });
-    </script>
+    <script src="dashboard.js"></script>
   </body>
 </html>
