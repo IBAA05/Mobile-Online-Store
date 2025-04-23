@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer & Phone Online Store</title>
+    <link rel="stylesheet" href="dtails.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="logo">
+            <img src="images/Logo.png" alt="Cyber Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search products...">
+            <i class='bx bx-search'></i>
+        </div>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#categories">Categories</a></li>
+            <li><a href="products.html" class="products-active">Products</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#customers">Customers</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <a href="#" class="login-btn">Login</a>
+            <a href="cart.html" class="cart-btn"><i class='bx bx-cart'></i></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="product-display">
+            <div class="product-images">
+                <img src="images/Image.png" alt="Apple iPhone 14 Pro Max">
+            </div>
+            <div class="product-info">
+                <h1>Apple iPhone 14 Pro Max</h1>
+                <p class="price">$1,399</p>
+                <div class="options">
+                    <div class="color-selection">
+                        <span>Select color:</span>
+                        <div class="color-swatches">
+                            <div class="swatch black"></div>
+                            <div class="swatch purple"></div>
+                            <div class="swatch gold"></div>
+                            <div class="swatch silver"></div>
+                        </div>
+                    </div>
+                    <div class="storage-selection">
+                        <span>Select storage:</span>
+                        <div class="storage-options">
+                            <button class="storage-btn">256GB</button>
+                            <button class="storage-btn">512GB</button>
+                            <button class="storage-btn">1TB</button>                        
+                          </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="wishlist">Add to Wishlist</button>
+                    <button class="cart">Add to Cart</button>
+                </div>
+                <div class="delivery-options">
+                    <span>Free Delivery</span>
+                    <span>1-3 days</span>
+                    <span>In stock</span>
+                    <span>Guaranteed</span>
+                </div>
+            </div>
+        </section>
+        <section class="product-details">
+            <details>
+                <summary>Screen</summary>
+                <ul>
+                    <li>Screen diagonal: 6.7"</li>
+                    <li>Screen resolution: 2796x1290</li>
+                    <li>The screen refresh rate: 120 Hz</li>
+                    <li>Pixel density: 460 ppi</li>
+                    <li>Screen type: Dynamic Island OLED</li>
+                    <li>Always-On Display</li>
+                    <li>True Tone</li>
+                </ul>
+            </details>
+            <details>
+                <summary>CPU</summary>
+                <ul>
+                    <li>Number of cores: 6</li>
+                    <li>A16 Bionic</li>
+                </ul>
+            </details>
+            <details>
+                <summary>Additionally</summary>
+                <ul>
+                    <li>Ceramic Shield</li>
+                    <li>Water resistance (IP68)</li>
+                </ul>
+            </details>
+        </section>
+
+        <section class="reviews">
+            <div class="rating-summary">
+                <h2>Customer Reviews</h2>
+                <div class="stars">★★★★☆ 4.8</div>
+                <div class="rating-distribution">
+                    <div class="bar-container">
+                        <span>Excellent</span>
+                        <div class="bar">
+                            <div class="fill" style="width: 80%;"></div>
+                        </div>
+                        <span>80%</span>
+                    </div>
+                    <div class="bar-container">
+                        <span>Good</span>
+                        <div class="bar">
+                            <div class="fill" style="width: 15%;"></div>
+                        </div>
+                        <span>15%</span>
+                    </div>
+                    <div class="bar-container">
+                        <span>Average</span>
+                        <div class="bar">
+                            <div class="fill" style="width: 3%;"></div>
+                        </div>
+                        <span>3%</span>
+                    </div>
+                    <div class="bar-container">
+                        <span>Below Average</span>
+                        <div class="bar">
+                            <div class="fill" style="width: 1%;"></div>
+                        </div>
+                        <span>1%</span>
+                    </div>
+                    <div class="bar-container">
+                        <span>Poor</span>
+                        <div class="bar">
+                            <div class="fill" style="width: 1%;"></div>
+                        </div>
+                        <span>1%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="user-reviews">
+                <details class="review">
+                    <summary>
+                        <img src="images/use1.jpg" alt="Grace Cancy">
+                        <div class="review-header">
+                            <h3>Grace Cancy</h3>
+                            <div class="stars">★★★★★</div>
+                            <p>24 January 2023</p>
+                        </div>
+                    </summary>
+                    <p>Great phone, love the camera! The battery life is amazing, and the camera quality is top-notch.</p>
+                </details>
+                <details class="review">
+                    <summary>
+                        <img src="images/use1.jpg" alt="Ronald Richards">
+                        <div class="review-header">
+                            <h3>Ronald Richards</h3>
+                            <div class="stars">★★★★☆</div>
+                            <p>20 January 2023</p>
+                        </div>
+                    </summary>
+                    <p>Very fast and sleek design, but the price is a bit high.</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="related-products">
+            <h2>Related Products</h2>
+            <div class="products">
+                <div class="product">
+                    <img src="images/Iphone 14 pro 1 (3).png" alt="Apple iPhone 14 S 512GB Gold">
+                    <h3>Apple iPhone 14 S 512GB Gold</h3>
+                    <p>$1,437</p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product">
+                    <img src="images/Iphone 14 pro 1 (1).png" alt="AirPods Max Silver">
+                    <h3>AirPods Max Silver</h3>
+                    <p>$549</p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product">
+                    <img src="images/Iphone 14 pro 1 (2).png" alt="Apple Watch Series 8">
+                    <h3>Apple Watch Series 8</h3>
+                    <p>$399</p>
+                    <button>Buy Now</button>
+                </div>
+                <div class="product">
+                    <img src="images/Iphone 14 pro 1 (3).png" alt="Apple iPhone 14 Plus 256GB">
+                    <h3>Apple iPhone 14 Plus 256GB</h3>
+                    <p>$999</p>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
