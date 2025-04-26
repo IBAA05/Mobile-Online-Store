@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Computer & phone online store </title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 </head>
+
 <body>
-   <!-- navbar -->
-   <header>
+  <!-- navbar -->
+  <header>
     <div class="logo">
       <img src="images/Logo.png" alt="Cyber Logo">
-    </div>    
+    </div>
     <!-- Search Bar -->
     <div class="search-bar">
       <input type="text" placeholder="Search products...">
       <i class='bx bx-search'></i>
     </div>
-  
+
     <div class="bx bx-menu" id="menu-icon"></div>
-    
+
     <!-- Nav list -->
     <ul class="navbar">
       <li><a href="#home" class="home-active">Home</a></li>
@@ -32,22 +35,26 @@
       <li><a href="#about">About</a></li>
       <li><a href="#customers">Customers</a></li>
     </ul>
-  
+
     <!-- Login Button (replacing profile) -->
-    <div class="auth-buttons">
-      <a href="#" class="login-btn">Login</a>
+    <!-- <div class="auth-buttons">
+      <a href="login.html" class="login-btn">Login</a>
+      <a href="cart.html" class="cart-btn"><i class='bx bx-cart'></i></a>
+    </div> -->
+    <div class="auth-buttons" id="authButtons">
+      <a href="login.html" class="login-btn" id="loginButton">Login</a>
       <a href="cart.html" class="cart-btn"><i class='bx bx-cart'></i></a>
     </div>
   </header>
 
-    <!-- home -->
+  <!-- home -->
   <section class="home">
     <div class="home-text">
-     <!-- <span> We are Cyber</span>-->
+      <!-- <span> We are Cyber</span>-->
       <h1> Choose Cyber <br> Best Price <br> Best Quality</h1>
       <a href="#categories" class="btn"> Shop Now <i class='bx bx-right-arrow-alt'></i> </a>
     </div>
-    <div >
+    <div>
       <img src="images/Iphone Image.png" alt="iPhone 14 Pro" class="hero-img">
     </div>
   </section>
@@ -56,7 +63,7 @@
   <section class="categories" id="categories">
     <div class="heading">
       <h1>Browse Our Products <br> <span>categories </h1>
-       <a href="products.html" class="btn"> See All <i class='bx bx-right-arrow-alt'></i> </a>
+      <a href="products.html" class="btn"> See All <i class='bx bx-right-arrow-alt'></i> </a>
     </div>
 
     <!-- container content -->
@@ -70,28 +77,28 @@
       </div>
       <!-- Box 2 -->
       <div class="box box2">
-        <img src="images/iphone16pro-removebg-preview.png" alt="">
+        <img src="images/Pcs.jpg" alt="">
         <h2> PCs </h2>
         <span>22 Items</span>
         <a href="products.html"><i class='bx bx-right-arrow-alt'></i></a>
       </div>
       <!-- Box 3 -->
       <div class="box box3">
-        <img src="images/iphone16pro-removebg-preview.png" alt="">
-        <h2> Keyboards </h2>
+        <img src="images/headphones.png" alt="">
+        <h2> Headphones </h2>
         <span>22 Items</span>
         <a href="products.html"><i class='bx bx-right-arrow-alt'></i></a>
       </div>
       <!-- Box 4 -->
       <div class="box box4">
-        <img src="images/iphone16pro-removebg-preview.png" alt="">
-        <h2> Mouses </h2>
+        <img src="images/camera's.png" alt="">
+        <h2> Cameras </h2>
         <span>22 Items</span>
         <a href="products.html"><i class='bx bx-right-arrow-alt'></i></a>
       </div>
       <!-- Box 5 -->
       <div class="box box5">
-        <img src="images/iphone16pro-removebg-preview.png" alt="">
+        <img src="images/Accesoires.png" alt="">
         <h2> Accessoires </h2>
         <span>22 Items</span>
         <a href="products.html"><i class='bx bx-right-arrow-alt'></i></a>
@@ -103,7 +110,7 @@
   <section class="products" id="products">
     <div class="heading">
       <h1> Our Popular <br> <span> Products </h1>
-       <a href="products.html" class="btn"> Shop Now <i class='bx bx-right-arrow-alt'></i> </a>
+      <a href="products.html" class="btn"> Shop Now <i class='bx bx-right-arrow-alt'></i> </a>
     </div>
     <!-- product content-->
     <div class="products-container">
@@ -111,7 +118,7 @@
       <div class="box">
         <img src="images/iphone16pro-removebg-preview.png" alt="">
         <span> New Arrival </span>
-        <h2> Iphone 16 Pro max  <br> 256 GB</h2>
+        <h2> Iphone 16 Pro max <br> 256 GB</h2>
         <h3 class="price">$1,399</h3>
         <a href="details.html"><i class='bx bx-cart-alt'></i></a>
         <i class='bx bx-heart'></i>
@@ -121,7 +128,7 @@
       <div class="box">
         <img src="images/iphone16pro-removebg-preview.png" alt="">
         <span> New Arrival </span>
-        <h2> Iphone 16 Pro max  <br> 256 GB</h2>
+        <h2> Iphone 16 Pro max <br> 256 GB</h2>
         <h3 class="price">$1,399</h3>
         <a href="details.html"><i class='bx bx-cart-alt'></i></a>
         <i class='bx bx-heart'></i>
@@ -131,7 +138,7 @@
       <div class="box">
         <img src="images/iphone16pro-removebg-preview.png" alt="">
         <span> New Arrival </span>
-        <h2> Iphone 16 Pro max  <br> 256 GB</h2>
+        <h2> Iphone 16 Pro max <br> 256 GB</h2>
         <h3 class="price">$1,399</h3>
         <a href="details.html"><i class='bx bx-cart-alt'></i></a>
         <i class='bx bx-heart'></i>
@@ -141,7 +148,7 @@
       <div class="box">
         <img src="images/iphone16pro-removebg-preview.png" alt="">
         <span> New Arrival </span>
-        <h2> Iphone 16 Pro max  <br> 256 GB</h2>
+        <h2> Iphone 16 Pro max <br> 256 GB</h2>
         <h3 class="price">$1,399</h3>
         <a href="details.html"><i class='bx bx-cart-alt'></i></a>
         <i class='bx bx-heart'></i>
@@ -151,7 +158,7 @@
       <div class="box">
         <img src="images/iphone16pro-removebg-preview.png" alt="">
         <span> New Arrival </span>
-        <h2> Iphone 16 Pro max  <br> 256 GB</h2>
+        <h2> Iphone 16 Pro max <br> 256 GB</h2>
         <h3 class="price">$1,399</h3>
         <a href="details.html"><i class='bx bx-cart-alt'></i></a>
         <i class='bx bx-heart'></i>
@@ -161,21 +168,23 @@
       <div class="box">
         <img src="images/iphone16pro-removebg-preview.png" alt="">
         <span> New Arrival </span>
-        <h2> Iphone 16 Pro max  <br> 256 GB</h2>
+        <h2> Iphone 16 Pro max <br> 256 GB</h2>
         <h3 class="price">$1,399</h3>
         <a href="details.html"><i class='bx bx-cart-alt'></i></a>
         <i class='bx bx-heart'></i>
         <span class="discount">-25%</span>
       </div>
     </div>
-   </section>
+  </section>
 
-   <!-- About -->
-   <section class="about" id="about">
-    <img src="images/about-removebg-preview.png" alt="">
+  <!-- About -->
+  <section class="about" id="about">
+    <img src="images/about.png" alt="">
     <div class="about-text">
       <span> About Us</span>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel repellat deleniti aperiam ratione ullam quisquam non distinctio voluptatibus itaque sequi corrupti perferendis accusantium voluptate deserunt assumenda, fugit voluptas architecto ab.</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel repellat deleniti aperiam ratione ullam quisquam
+        non distinctio voluptatibus itaque sequi corrupti perferendis accusantium voluptate deserunt assumenda, fugit
+        voluptas architecto ab.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae fugit deleniti culpa?</p>
       <a href="#" class="btn"> Learn More <i class='bx bx-right-arrow-alt'></i> </a>
     </div>
@@ -185,10 +194,10 @@
   <section class="customers" id="customers">
     <h2> Why Customer's Love Us </h2>
     <!-- Customer Content -->
-     <div class="customers-container">
+    <div class="customers-container">
       <!-- review 1 -->
       <div class="box">
-        <i class='bx bxs-quote-alt-left' ></i>
+        <i class='bx bxs-quote-alt-left'></i>
         <div class="stars">
           <i class='bx bxs-star'></i>
           <i class='bx bxs-star'></i>
@@ -197,7 +206,8 @@
           <i class='bx bxs-star'></i>
           <i class='bx bxs-star-half'></i>
         </div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cumque perferendis, beatae hic impedit iusto? Repellat?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cumque perferendis, beatae hic impedit iusto?
+          Repellat?</p>
         <div class="review-profile">
           <img src="img/c1.jpg" alt="">
           <h3>Ahmed</h3>
@@ -205,7 +215,7 @@
       </div>
       <!-- review 2 -->
       <div class="box">
-        <i class='bx bxs-quote-alt-left' ></i>
+        <i class='bx bxs-quote-alt-left'></i>
         <div class="stars">
           <i class='bx bxs-star'></i>
           <i class='bx bxs-star'></i>
@@ -214,7 +224,8 @@
           <i class='bx bxs-star'></i>
           <i class='bx bxs-star-half'></i>
         </div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cumque perferendis, beatae hic impedit iusto? Repellat?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cumque perferendis, beatae hic impedit iusto?
+          Repellat?</p>
         <div class="review-profile">
           <img src="img/c2.jpg" alt="">
           <h3>Ahmed</h3>
@@ -222,7 +233,7 @@
       </div>
       <!-- review 3 -->
       <div class="box">
-        <i class='bx bxs-quote-alt-left' ></i>
+        <i class='bx bxs-quote-alt-left'></i>
         <div class="stars">
           <i class='bx bxs-star'></i>
           <i class='bx bxs-star'></i>
@@ -231,62 +242,60 @@
           <i class='bx bxs-star'></i>
           <i class='bx bxs-star-half'></i>
         </div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cumque perferendis, beatae hic impedit iusto? Repellat?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cumque perferendis, beatae hic impedit iusto?
+          Repellat?</p>
         <div class="review-profile">
           <img src="img/c3.jpg" alt="">
           <h3>Ahmed</h3>
         </div>
       </div>
-     </div>
- </section>
- <!-- footer -->
- <section class="footer" id="footer">
-  <div class="footer-box">
-    <div class="logo">
-      <img src="images/Logo.png" alt="Cyber Logo">
     </div>
-    <p>University Constantine2 <br> Algeria</p>
-    <div class="social">
-      <a href="#"><i class='bx bxl-facebook'></i></a>
-      <a href="#"><i class='bx bxl-linkedin '></i></a>
-      <a href="#"><i class='bx bxl-instagram'></i></a>
-      <a href="#"><i class='bx bxl-youtube'></i></a>
+  </section>
+  <!-- footer -->
+  <section class="footer" id="footer">
+    <div class="footer-box">
+      <div class="logo">
+        <img src="images/Logo.png" alt="Cyber Logo">
+      </div>
+      <p>University Constantine2 <br> Algeria</p>
+      <div class="social">
+        <a href="#"><i class='bx bxl-facebook'></i></a>
+        <a href="#"><i class='bx bxl-linkedin '></i></a>
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-youtube'></i></a>
+      </div>
     </div>
-  </div>
-  <div class="footer-box">
+    <div class="footer-box">
       <h2>Categories</h2>
-      <a href="#"> Phones </a>
-      <a href="#"> Accesoires </a>
-      <a href="#"> Smart Watches </a>
-      <a href="#"> Laptops & Monitors </a>
+      <a href="products.html"> Phones </a>
+      <a href="products.html"> Accesoires </a>
+      <a href="products.html"> Smart Watches </a>
+      <a href="products.html"> Laptops & Monitors </a>
 
+    </div>
+    <div class="footer-box">
+      <h2> Services </h2>
+      <a href="#">Order tracking</a>
+      <a href="#">Customer service </a>
+      <a href="#">Payment options </a>
+      <a href="#">Privacy & Security </a>
+    </div>
+    <div class="footer-box">
+      <h2>Contact Us</h2>
+      <p>Do you have a problem? <br> Leave it in message </p>
+      <form action="">
+        <i class='bx bxs-message'></i>
+        <input type="email" name="" id="" placeholder="Enter Your Problem">
+        <i class='bx bx-arrow-back bx-rotate-180'></i>
+      </form>
+    </div>
+  </section>
+  <!-- copyright -->
+  <div class="copyright">
+    <p>&#169; Ibaa All Right Reserved.</p>
   </div>
-  <div class="footer-box">
-    <h2> Services </h2>
-    <a href="#">Order tracking</a>
-    <a href="#">Customer service </a>
-    <a href="#">Payment options </a>
-    <a href="#">Privacy & Security </a>
-</div>
-<div class="footer-box">
-  <h2>Contact Us</h2>
- <p>Do you have a problem?  <br> Leave it in message </p>
- <form action="">
-  <i class='bx bxs-message'></i>
-  <input type="email" name="" id="" placeholder="Enter Your Problem">
-  <i class='bx bx-arrow-back bx-rotate-180' ></i>
-  </form>
-</div>
-</section>
-<!-- copyright -->
- <div class="copyright">
-  <p>&#169; Ibaa All Right Reserved.</p>
- </div>
-  </body>
-  </html>
+  <script src="script.js"> </script>
+  <script src="auth.js"></script>
+</body>
 
-
-
-
-    
-    
+</html>

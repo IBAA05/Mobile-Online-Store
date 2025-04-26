@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Computer & Phone Online Store</title>
-    <link rel="stylesheet" href="products.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="auth.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="products.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+    <script src="products.js"></script>
+    <script src="database.js"></script>
 </head>
+
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -14,50 +20,51 @@
         <div class="price-range">
             <div>
                 <label>From</label>
-                <input type="number" value="1299">
+                <input type="number" value="1299" />
             </div>
             <div>
                 <label>To</label>
-                <input type="number" value="1299">
+                <input type="number" value="1299" />
             </div>
         </div>
         <h3>BRAND</h3>
         <div class="sidebar-search-bar">
-            <input type="text" placeholder="Search">
-            <i class='bx bx-search'></i>
+            <input type="text" placeholder="Search" />
+            <i class="bx bx-search"></i>
         </div>
-        <label><input type="checkbox" checked> Apple 110</label>
-        <label><input type="checkbox"> Samsung 125</label>
-        <label><input type="checkbox"> Xiaomi 63</label>
-        <label><input type="checkbox"> Poco 44</label>
-        <label><input type="checkbox"> Oppo 36</label>
-        <label><input type="checkbox"> Honor 10</label>
-        <label><input type="checkbox"> Motorola 34</label>
-        <label><input type="checkbox"> Nokia 22</label>
-        <label><input type="checkbox"> Realme 35</label>
+        <label><input type="checkbox" checked /> Apple 110</label>
+        <label><input type="checkbox" /> Samsung 125</label>
+        <label><input type="checkbox" /> Xiaomi 63</label>
+        <label><input type="checkbox" /> Poco 44</label>
+        <label><input type="checkbox" /> Oppo 36</label>
+        <label><input type="checkbox" /> Honor 10</label>
+        <label><input type="checkbox" /> Motorola 34</label>
+        <label><input type="checkbox" /> Nokia 22</label>
+        <label><input type="checkbox" /> Realme 35</label>
         <h3>BUILT-IN MEMORY</h3>
         <div class="sidebar-search-bar">
-            <input type="text" placeholder="Search">
-            <i class='bx bx-search'></i>
+            <input type="text" placeholder="Search" />
+            <i class="bx bx-search"></i>
         </div>
-        <label><input type="checkbox"> 16GB 66</label>
-        <label><input type="checkbox"> 32GB 123</label>
-        <label><input type="checkbox"> 64GB 48</label>
-        <label><input type="checkbox"> 128GB 60</label>
-        <label><input type="checkbox"> 256GB 54</label>
-        <label><input type="checkbox"> 512GB 8</label>
+        <label><input type="checkbox" /> 16GB 66</label>
+        <label><input type="checkbox" /> 32GB 123</label>
+        <label><input type="checkbox" /> 64GB 48</label>
+        <label><input type="checkbox" /> 128GB 60</label>
+        <label><input type="checkbox" /> 256GB 54</label>
+        <label><input type="checkbox" /> 512GB 8</label>
     </div>
 
+    
     <!-- Main Content -->
     <div class="main-content">
         <!-- Navbar -->
         <header>
             <div class="logo">
-                <img src="images/Logo.png" alt="Cyber Logo">
+                <img src="images/Logo.png" alt="Cyber Logo" />
             </div>
             <div class="search-bar">
-                <input type="text" placeholder="Search products...">
-                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Search products..." />
+                <i class="bx bx-search"></i>
             </div>
             <div class="bx bx-menu" id="menu-icon"></div>
             <ul class="navbar">
@@ -67,113 +74,123 @@
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#customers">Customers</a></li>
             </ul>
-            <div class="auth-buttons">
-                <a href="#" class="login-btn">Login</a>
+            <!-- <div class="auth-buttons">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="cart.html" class="cart-btn"><i class="bx bx-cart"></i></a>
+            </div> -->
+            <div class="auth-buttons" id="authButtons">
+                <a href="login.html" class="login-btn" id="loginButton">Login</a>
                 <a href="cart.html" class="cart-btn"><i class='bx bx-cart'></i></a>
-            </div>
+              </div>
         </header>
 
         <!-- Product Content -->
         <section class="products" id="products">
             <div class="heading">
-                <h1><a href="index.html">Home</a> <span>></span> <a href="#">Products</a></h1>
+                <h1>
+                    <a href="index.html">Home</a> <span>></span>
+                    <a href="#">Products</a>
+                </h1>
             </div>
             <div class="products-container">
                 <div class="box">
                     <span class="discount">New</span>
-                    <img src="images/iphone16pro-removebg-preview.png" alt="">
+                    <img src="images/iphone16pro-removebg-preview.png" alt="" />
                     <span>Iphone 16 Pro max</span>
                     <h2>(256GB)</h2>
                     <h3 class="price">50000.00 DZD</h3>
-                    <i class='bx bx-heart'></i>
+                    <i class="bx bx-heart"></i>
                     <a href="details.html" class="btn">Shop Now</a>
                 </div>
                 <div class="box">
-                    <img src="images/iphone16pro-removebg-preview.png" alt="">
+                    <img src="images/iphone16pro-removebg-preview.png" alt="" />
                     <span>Iphone 16 Pro max</span>
                     <h2>(256GB)</h2>
                     <h3 class="price">50000.00 DZD</h3>
-                    <i class='bx bx-heart'></i>
+                    <i class="bx bx-heart"></i>
                     <a href="details.html" class="btn">Shop Now</a>
                 </div>
                 <div class="box">
-                    <img src="images/iphone16pro-removebg-preview.png" alt="">
+                    <img src="images/iphone16pro-removebg-preview.png" alt="" />
                     <span>Iphone 16 Pro max</span>
                     <h2>(256GB)</h2>
                     <h3 class="price">50000.00 DZD</h3>
-                    <i class='bx bx-heart'></i>
+                    <i class="bx bx-heart"></i>
                     <a href="details.html" class="btn">Shop Now</a>
                 </div>
                 <div class="box">
-                    <img src="images/iphone16pro-removebg-preview.png" alt="">
+                    <img src="images/iphone16pro-removebg-preview.png" alt="" />
                     <span>Iphone 16 Pro max</span>
                     <h2>(256GB)</h2>
                     <h3 class="price">50000.00 DZD</h3>
-                    <i class='bx bx-heart'></i>
+                    <i class="bx bx-heart"></i>
                     <a href="details.html" class="btn">Shop Now</a>
                 </div>
                 <div class="box">
-                    <img src="images/iphone16pro-removebg-preview.png" alt="">
+                    <img src="images/iphone16pro-removebg-preview.png" alt="" />
                     <span>Iphone 16 Pro max</span>
                     <h2>(256GB)</h2>
                     <h3 class="price">50000.00 DZD</h3>
-                    <i class='bx bx-heart'></i>
+                    <i class="bx bx-heart"></i>
                     <a href="details.html" class="btn">Shop Now</a>
                 </div>
                 <div class="box">
                     <span class="discount">New</span>
-                    <img src="images/iphone16pro-removebg-preview.png" alt="">
+                    <img src="images/iphone16pro-removebg-preview.png" alt="" />
                     <span>Iphone 16 Pro max</span>
                     <h2>(256GB)</h2>
                     <h3 class="price">50000.00 DZD</h3>
-                    <i class='bx bx-heart'></i>
+                    <i class="bx bx-heart"></i>
                     <a href="details.html" class="btn">Shop Now</a>
                 </div>
                 <div class="box">
-                    <img src="images/iphone16pro-removebg-preview.png" alt="">
+                    <img src="images/iphone16pro-removebg-preview.png" alt="" />
                     <span>Iphone 16 Pro max</span>
                     <h2>(256GB)</h2>
                     <h3 class="price">50000.00 DZD</h3>
-                    <i class='bx bx-heart'></i>
+                    <i class="bx bx-heart"></i>
                     <a href="details.html" class="btn">Shop Now</a>
                 </div>
                 <div class="box">
-                    <img src="images/iphone16pro-removebg-preview.png" alt="">
+                    <img src="images/iphone16pro-removebg-preview.png" alt="" />
                     <span>Iphone 16 Pro max</span>
                     <h2>(256GB)</h2>
                     <h3 class="price">50000.00 DZD</h3>
-                    <i class='bx bx-heart'></i>
+                    <i class="bx bx-heart"></i>
                     <a href="details.html" class="btn">Shop Now</a>
                 </div>
                 <div class="box">
-                    <img src="images/iphone16pro-removebg-preview.png" alt="">
+                    <img src="images/iphone16pro-removebg-preview.png" alt="" />
                     <span>Iphone 16 Pro max</span>
                     <h2>(256GB)</h2>
                     <h3 class="price">50000.00 DZD</h3>
-                    <i class='bx bx-heart'></i>
+                    <i class="bx bx-heart"></i>
                     <a href="details.html" class="btn">Shop Now</a>
                 </div>
             </div>
-            <div class="pagination">
+            <!-- <div class="pagination">
                 <button class="active">1</button>
                 <button>2</button>
                 <button>3</button>
                 <span>...</span>
                 <button>12</button>
-            </div>
+            </div> -->
         </section>
         <!-- footer -->
         <section class="footer" id="footer">
             <div class="footer-box">
                 <div class="logo">
-                    <img src="images/Logo.png" alt="Cyber Logo">
+                    <img src="images/Logo.png" alt="Cyber Logo" />
                 </div>
-                <p>University Constantine2 <br> Algeria</p>
+                <p>
+                    University Constantine2 <br />
+                    Algeria
+                </p>
                 <div class="social">
-                    <a href="#"><i class='bx bxl-facebook'></i></a>
-                    <a href="#"><i class='bx bxl-linkedin '></i></a>
-                    <a href="#"><i class='bx bxl-instagram'></i></a>
-                    <a href="#"><i class='bx bxl-youtube'></i></a>
+                    <a href="#"><i class="bx bxl-facebook"></i></a>
+                    <a href="#"><i class="bx bxl-linkedin"></i></a>
+                    <a href="#"><i class="bx bxl-instagram"></i></a>
+                    <a href="#"><i class="bx bxl-youtube"></i></a>
                 </div>
             </div>
             <div class="footer-box">
@@ -184,7 +201,7 @@
                 <a href="#"> Laptops & Monitors </a>
             </div>
             <div class="footer-box">
-                <h2> Services </h2>
+                <h2>Services</h2>
                 <a href="#">Order tracking</a>
                 <a href="#">Customer service </a>
                 <a href="#">Payment options </a>
@@ -192,11 +209,14 @@
             </div>
             <div class="footer-box">
                 <h2>Contact Us</h2>
-                <p>Do you have a problem?  <br> Leave it in message </p>
+                <p>
+                    Do you have a problem? <br />
+                    Leave it in message
+                </p>
                 <form action="">
-                    <i class='bx bxs-message'></i>
-                    <input type="email" name="" id="" placeholder="Enter Your Problem">
-                    <i class='bx bx-arrow-back bx-rotate-180' ></i>
+                    <i class="bx bxs-message"></i>
+                    <input type="email" name="" id="" placeholder="Enter Your Problem" />
+                    <i class="bx bx-arrow-back bx-rotate-180"></i>
                 </form>
             </div>
         </section>
@@ -205,5 +225,8 @@
             <p>© Ibaa All Right Reserved.</p>
         </div>
     </div>
+    <script src="products.js"></script>
+    <script src="database.js"></script>
 </body>
+
 </html>
