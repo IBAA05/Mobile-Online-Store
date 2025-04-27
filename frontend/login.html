@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="database.js"></script>
+</head>
+
+<body class="flex justify-content items-center h-screen bg-gray-900">
+    <div class="login-container">
+        <!-- Left Half: Image Section -->
+        <div class="image-section">
+            <img src="images/home3.png" alt="Branding Image" />
+        </div>
+
+        <!-- Right Half: Form Section -->
+        <div class="form-section">
+            <form id="loginForm" class="login-form">
+                <h2>Welcome To Cyber</h2>
+
+                <div id="error-message"
+                    class="hidden bg-red-100 border border-red-400 text-red-700 px-3 py-3 rounded relative mb-3">
+                    <span id="error-text"></span>
+                </div>
+                <!-- Email Field -->
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+                <!-- Password Field -->
+                <label for="password">Password</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required />
+                    <button type="button" id="togglePassword">Show</button>
+                </div>
+
+                <!-- Remember Me Checkbox -->
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe" name="rememberMe" class="rememberCheckBox w-4 h-4" />
+                    <label for="rememberMe" class="Remember-Me-label">Remember Me</label>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" class="login-button">Login</button>
+
+                <!-- Forgot Password Link -->
+                <a href="#" class="forgot-password">Forgot Password?</a>
+                <button id="signupButton" class="signup-btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+
+</html>
