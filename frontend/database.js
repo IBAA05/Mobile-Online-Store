@@ -2,17 +2,28 @@ const db = {
     admins: [
         {
             id: 1,
+<<<<<<< HEAD
             name: "Seyf eddine",
             email: "admin@example.com",
             password: "admin123",
+=======
+            name: "Ibaa",
+            email: "ibaa@example.com",
+            password: "ibaa123",
+>>>>>>> 337d3eb3608c04cf8ad1d623590c5c7d5eb743a4
             status: "active",
             createdAt: "2023-01-01T00:00:00Z",
             lastLogin: "2023-06-15T00:00:00Z"
         },
         {
             id: 2,
+<<<<<<< HEAD
             name: "Wail nedjar",
             email: "wail@example.com",
+=======
+            name: "Seif",
+            email: "seif@example.com",
+>>>>>>> 337d3eb3608c04cf8ad1d623590c5c7d5eb743a4
             password: "secure456",
             status: "active",
             createdAt: "2023-02-15T00:00:00Z",
@@ -20,8 +31,13 @@ const db = {
         },
         {
             id: 3,
+<<<<<<< HEAD
             name: "Mounder dehdouh",
             email: "mounder@example.com",
+=======
+            name: "Ahmed",
+            email: "ahmed@example.com",
+>>>>>>> 337d3eb3608c04cf8ad1d623590c5c7d5eb743a4
             password: "test123",
             status: "blocked",
             createdAt: "2023-03-20T00:00:00Z",
@@ -257,16 +273,23 @@ const db = {
             price: 50000.00,
             discount: 10,
             images: ["images/iphone16pro-removebg-preview.png"],
+<<<<<<< HEAD
             variants: [
                 { storage: "256GB", price: 32000.00, stock: 15 },
                 { storage: "512GB", price: 37000.00, stock: 10 },
                 { storage: "1TB", price: 50000.00, stock: 20 },
             ]
+=======
+            properties: {
+                storage: "256GB"
+            }
+>>>>>>> 337d3eb3608c04cf8ad1d623590c5c7d5eb743a4
         },
         {
             id: 2,
             title: "Galaxy S24 Ultra",
             brand: "Samsung",
+<<<<<<< HEAD
             discount: 8,
             images: ["images/iphone16pro-removebg-preview.png"],
             variants: [
@@ -274,11 +297,20 @@ const db = {
                 { storage: "512GB", price: 37000.00, stock: 10 },
                 { storage: "1TB", price: 50000.00, stock: 20 },
             ]
+=======
+            price: 45000.00,
+            discount: 8,
+            images: ["images/galaxys24ultra-removebg-preview.png"],
+            properties: {
+                storage: "512GB"
+            }
+>>>>>>> 337d3eb3608c04cf8ad1d623590c5c7d5eb743a4
         },
         {
             id: 3,
             title: "Pixel 9 Pro",
             brand: "Google",
+<<<<<<< HEAD
             discount: 5,
             images: ["images/iphone16pro-removebg-preview.png"],
             variants: [
@@ -286,11 +318,20 @@ const db = {
                 { storage: "512GB", price: 37000.00, stock: 10 },
                 { storage: "1TB", price: 50000.00, stock: 20 },
             ]
+=======
+            price: 40000.00,
+            discount: 5,
+            images: ["images/pixel9pro-removebg-preview.png"],
+            properties: {
+                storage: "128GB"
+            }
+>>>>>>> 337d3eb3608c04cf8ad1d623590c5c7d5eb743a4
         },
         {
             id: 4,
             title: "OnePlus 12",
             brand: "OnePlus",
+<<<<<<< HEAD
             discount: 12,
             images: ["images/iphone16pro-removebg-preview.png"],
             variants: [
@@ -298,11 +339,20 @@ const db = {
                 { storage: "512GB", price: 37000.00, stock: 10 },
                 { storage: "1TB", price: 50000.00, stock: 20 },
             ]
+=======
+            price: 35000.00,
+            discount: 12,
+            images: ["images/oneplus12-removebg-preview.png"],
+            properties: {
+                storage: "256GB"
+            }
+>>>>>>> 337d3eb3608c04cf8ad1d623590c5c7d5eb743a4
         },
         {
             id: 5,
             title: "Xiaomi 14 Pro",
             brand: "Xiaomi",
+<<<<<<< HEAD
             discount: 15,
             images: ["images/iphone16pro-removebg-preview.png"],
             variants: [
@@ -334,13 +384,33 @@ const db = {
         });
         return allProducts;
     },
+=======
+            price: 32000.00,
+            discount: 15,
+            images: ["images/xiaomi14pro-removebg-preview.png"],
+            properties: {
+                storage: "256GB"
+            }
+        }
+    ],
+    getAllProducts: function() {
+        return this.products;
+    },
+    
+>>>>>>> 337d3eb3608c04cf8ad1d623590c5c7d5eb743a4
     getUniqueBrands: function() {
         const brands = new Set();
         this.products.forEach(product => brands.add(product.brand));
         return Array.from(brands);
     },
+<<<<<<< HEAD
     getProductsByBrand: function(brand) {
         return this.getAllProducts().filter(product => product.brand === brand);
+=======
+    
+    getProductsByBrand: function(brand) {
+        return this.products.filter(product => product.brand === brand);
+>>>>>>> 337d3eb3608c04cf8ad1d623590c5c7d5eb743a4
     }
 
     // // PRODUCT MANAGEMENT FUNCTIONS
@@ -478,4 +548,8 @@ if (typeof window !== 'undefined') {
 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = db;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 337d3eb3608c04cf8ad1d623590c5c7d5eb743a4
