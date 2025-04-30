@@ -11,141 +11,117 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
-  <body class="min-h-screen">
-    <div class="min-h-screen flex flex-col">
+  <body class="main-container">
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <img src="images/logo.png" alt="TechHub Logo" class="logo" />
+      </div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-button">
+          <a href="dashboard.html"> <i class="fas fa-box"></i> Dashboard </a>
+        </li>
+        <li class="sidebar-button active-sidebar">
+          <a href="products.html"> <i class="fas fa-box"></i> Products </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="orders.html">
+            <i class="fas fa-shopping-cart"></i> Orders
+          </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="customers.html"> <i class="fas fa-users"></i> Customers </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="settings.html"> <i class="fas fa-cog"></i> Settings </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
       <!-- Header -->
-      <div class="bg-white shadow-md w-full">
-        <div class="flex items-center justify-between px-4 py-3">
-          <div class="flex items-center">
-            <img
-              src="images/logo.png"
-              alt="TechHub Logo"
-              class="h-10 w-10 mr-2"
-            />
+      <div class="header">
+        <div class="header-content">
+          <div class="header-title">
+            <h2>Dashboard</h2>
           </div>
-          <div class="flex items-center gap-4">
+          <div class="user-nav">
             <img
               src="images/notification.jpg"
               alt="Notification"
-              class="h-5 rounded-full"
+              class="notification-icon"
             />
-            <img
-              src="images/user.jpeg"
-              alt="User"
-              class="h-8 rounded-full border"
-            />
+            <img src="images/user.jpeg" alt="User" class="user-avatar" />
             <button class="btn btn-primary">Logout</button>
           </div>
         </div>
       </div>
-      <div class="flex flex-1 overflow-hidden">
-        <!-- Sidebar -->
-        <div id="sidebar" class="sidebar">
-          <div class="flex items-center gap-2 px-4 py-4">
-            <ul class="mt-4 flex-1">
-              <li class="sidebar-button active-sidebar">
-                <a href="dashboard.html" class="flex items-center">
-                  <i class="fas fa-box mr-2"></i> Dashboard
-                </a>
-              </li>
-              <li class="sidebar-button">
-                <a href="products.html" class="flex items-center">
-                  <i class="fas fa-box mr-2"></i> Products
-                </a>
-              </li>
-              <li class="sidebar-button">
-                <a href="orders.html" class="flex items-center">
-                  <i class="fas fa-shopping-cart mr-2"></i> Orders
-                </a>
-              </li>
-              <li class="sidebar-button">
-                <a href="customers.html" class="flex items-center">
-                  <i class="fas fa-users mr-2"></i> Customers
-                </a>
-              </li>
-              <li class="sidebar-button">
-                <a href="settings.html" class="flex items-center">
-                  <i class="fas fa-cog mr-2"></i> Settings
-                </a>
-              </li>
-            </ul>
+      <div class="main-content">
+        
+        <div class="card-grid card-grid-3">
+          <!-- Stats Cards -->
+          <div class="stat-card">
+            <div class="stat-card-content">
+              <div class="stat-info">
+                <p class="stat-label">Total Products</p>
+                <h3 class="stat-value">1,234</h3>
+              </div>
+              <div class="stat-icon">
+                <i class="fas fa-box"></i>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <!-- Sidebar Toggle Button (Mobile) -->
-        <button
-          id="sidebarToggle"
-          class="p-3 rounded-full bg-primary-500 text-white"
-          style="position: fixed; bottom: 20px; right: 20px; z-index: 40"
-        >
-          <i class="fas fa-bars text-lg"></i>
-        </button>
-        <!-- Main Content -->
-        <div class="flex-1 overflow-auto p-6">
-          <!-- Summary Cards -->
-          <div class="grid grid-cols-3 gap-6 mb-6">
-            <!-- Products Card -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-gray-500 text-sm">Total Products</p>
-                  <h3 class="text-2xl font-bold text-primary-600">1,234</h3>
-                </div>
-                <div class="bg-primary-100 p-3 rounded-full">
-                  <i class="fas fa-box text-primary-500 text-xl"></i>
-                </div>
+          <div class="stat-card">
+            <div class="stat-card-content">
+              <div class="stat-info">
+                <p class="stat-label">Current Orders</p>
+                <h3 class="stat-value">56</h3>
+              </div>
+              <div class="stat-icon">
+                <i class="fas fa-shopping-cart"></i>
               </div>
             </div>
-
-            <!-- Orders Card -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-gray-500 text-sm">Current Orders</p>
-                  <h3 class="text-2xl font-bold text-primary-600">56</h3>
-                </div>
-                <div class="bg-primary-100 p-3 rounded-full">
-                  <i class="fas fa-shopping-cart text-primary-500 text-xl"></i>
-                </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-content">
+              <div class="stat-info">
+                <p class="stat-label">Active Users</p>
+                <h3 class="stat-value">789</h3>
               </div>
-            </div>
-
-            <!-- Users Card -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-gray-500 text-sm">Active Users</p>
-                  <h3 class="text-2xl font-bold text-primary-600">789</h3>
-                </div>
-                <div class="bg-primary-100 p-3 rounded-full">
-                  <i class="fas fa-users text-primary-500 text-xl"></i>
-                </div>
+              <div class="stat-icon">
+                <i class="fas fa-users"></i>
               </div>
             </div>
           </div>
-
-          <!-- Charts Section -->
-          <div class="grid grid-cols-2 gap-6">
-            <!-- Sales Chart -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-              <h3 class="text-lg font-semibold mb-4">Sales Overview</h3>
-              <div style="height: 250px">
-                <canvas id="salesChart"></canvas>
-              </div>
+        </div>
+        <div class="card-grid card-grid-2">
+          <!-- Charts -->
+          <div class="stat-card">
+            <h3 class="section-title">Sales Overview</h3>
+            <div class="chart-container">
+              <canvas id="salesChart"></canvas>
             </div>
-
-            <!-- Product Categories Chart -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-              <h3 class="text-lg font-semibold mb-4">Product Categories</h3>
-              <div style="height: 250px">
-                <canvas id="categoriesChart"></canvas>
-              </div>
+          </div>
+          <div class="stat-card">
+            <h3 class="section-title">Product Categories</h3>
+            <div class="chart-container">
+              <canvas id="categoriesChart"></canvas>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const sidebarToggle = document.getElementById("sidebarToggle");
 
+      if (sidebarToggle) {
+        sidebarToggle.addEventListener("click", () => {
+          sidebar.classList.toggle("sidebar-show");
+        });
+      }
+    </script>
     <script src="dashboard.js"></script>
   </body>
 </html>

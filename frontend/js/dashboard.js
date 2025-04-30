@@ -3,10 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Toggle sidebar on mobile
   const sidebarToggle = document.getElementById("sidebarToggle");
   const sidebar = document.getElementById("sidebar");
+  const contentWrapper = document.querySelector(".content-wrapper");
 
   if (sidebarToggle && sidebar) {
     sidebarToggle.addEventListener("click", () => {
       sidebar.classList.toggle("sidebar-show");
+      contentWrapper.classList.toggle("content-wrapper-expanded");
     });
   }
 

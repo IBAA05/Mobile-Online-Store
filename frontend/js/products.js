@@ -1,7 +1,13 @@
 const categoryFilter = document.getElementById("categoryFilter");
 const productsTableBody = document.getElementById("productsTableBody");
+const addProductBtn = document.getElementById("addProductBtn");
+const addProductModal = document.getElementById("addProductModal");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const cancelBtn = document.getElementById("cancelBtn");
+const saveProductBtn = document.getElementById("saveProductBtn");
+const addProductForm = document.getElementById("addProductForm");
 
-// Fetch products from JSON file
+// Fetch products from JSON
 async function fetchProducts() {
   try {
     const response = await fetch("data/products.json");
@@ -13,84 +19,67 @@ async function fetchProducts() {
   }
 }
 
-// Get unique categories for filter dropdown
+// Get unique product categories
 function getUniqueCategories(products) {
-  const categories = new Set(products.map((product) => product.category));
-  return Array.from(categories);
+  return [...new Set(products.map((product) => product.category))];
 }
 
-// Update category filter options
-function updateCategoryFilter(categories) {
+// Populate category filter options
+function populateCategoryFilter(categories) {
   categoryFilter.innerHTML = `
-          <option value="">All Categories</option>
-          ${categories
-            .map(
-              (category) => `
-            <option value="${category}">${category}</option>
-          `
-            )
-            .join("")}
-        `;
+    <option value="">All Categories</option>
+    ${categories
+      .map((category) => `<option value="${category}">${category}</option>`)
+      .join("")}
+  `;
 }
 
-function renderProducts(filteredProducts) {
+// Render products in table
+function renderProducts(products) {
   productsTableBody.innerHTML = "";
-  filteredProducts.forEach((product) => {
+
+  products.forEach((product) => {
     const row = document.createElement("tr");
+
     row.innerHTML = `
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="flex items-center">
-                <div class="flex-shrink-0 h-10 w-10">
-                  <img class="h-10 w-10 rounded-full" src="${
-                    product.images[0]
-                  }" alt="${product.name}">
-                </div>
-                <div class="ml-4">
-                  <div class="text-sm font-medium text-gray-900">${
-                    product.name
-                  }</div>
-                  <div class="text-sm text-gray-500">${product.brand}</div>
-                </div>
-              </div>
-            </td>
-            <td class="px-6 py-4 ">
-              <div class="text-sm text-gray-900">${product.category}</div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="text-sm text-gray-900">$${product.price.toFixed(
-                2
-              )}</div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="text-sm text-gray-900">${product.quantity}</div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                product.quantity > 0
-                  ? "bg-green-100 text-green-800"
-                  : "bg-red-100 text-red-800"
-              }">
-                ${product.quantity > 0 ? "In Stock" : "Out of Stock"}
-              </span>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-              <button class="text-blue-600 hover:text-red-900">Details</button>
-            </td>
-          `;
+      <td>
+        <div>
+          <img src="${
+            product.images[0]
+          }" alt="Product Image" width="40" height="40">
+          <div>
+            <strong>${product.name}</strong><br>
+            <small>${product.brand}</small>
+          </div>
+        </div>
+      </td>
+      <td>${product.category}</td>
+      <td>$${product.price.toFixed(2)}</td>
+      <td>${product.quantity}</td>
+      <td>
+        <span class="product-status">
+          ${product.quantity > 0 ? "In Stock" : "Out of Stock"}
+        </span>
+      </td>
+      <td>
+        <button>Details</button>
+      </td>
+    `;
+
     productsTableBody.appendChild(row);
   });
 }
 
-// Initialize the page
-async function initialize() {
+// Initialize everything
+async function initializePage() {
   const products = await fetchProducts();
   const categories = getUniqueCategories(products);
-  updateCategoryFilter(categories);
+
+  populateCategoryFilter(categories);
   renderProducts(products);
 
-  // Filter functionality
-  categoryFilter.addEventListener("change", (e) => {
-    const selectedCategory = e.target.value;
+  categoryFilter.addEventListener("change", (event) => {
+    const selectedCategory = event.target.value;
     const filteredProducts = selectedCategory
       ? products.filter((product) => product.category === selectedCategory)
       : products;
@@ -98,5 +87,49 @@ async function initialize() {
   });
 }
 
-// Initialize when the page loads
-initialize();
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Add Product features */
+
+addProductBtn.addEventListener("click", () => {
+  addProductModal.classList.add("modal-show");
+});
+
+function closeModal() {
+  addProductModal.classList.remove("modal-show");
+  addProductForm.reset();
+}
+
+closeModalBtn.addEventListener("click", closeModal);
+cancelBtn.addEventListener("click", closeModal);
+
+addProductModal.addEventListener("click", (e) => {
+  if (e.target === addProductModal) {
+    closeModal();
+  }
+});
+
+saveProductBtn.addEventListener("click", async () => {
+  if (!addProductForm.checkValidity()) {
+    addProductForm.reportValidity();
+    return;
+  }
+
+  const newProduct = {
+    id: Date.now(),
+    name: document.getElementById("productName").value,
+    brand: document.getElementById("productBrand").value,
+    category: document.getElementById("productCategory").value,
+    price: parseFloat(document.getElementById("productPrice").value),
+    quantity: parseInt(document.getElementById("productQuantity").value),
+    description: document.getElementById("productDescription").value,
+    images: [document.getElementById("productImage").value],
+  };
+  /* add more products*/
+  const products = await fetchProducts();
+  products.push(newProduct);
+  renderProducts(products);
+  closeModal();
+});
+
+initializePage();
