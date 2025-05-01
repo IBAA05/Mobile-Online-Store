@@ -1,4 +1,3 @@
-import { Chart } from "@/components/ui/chart";
 document.addEventListener("DOMContentLoaded", () => {
   // Toggle sidebar on mobile
   const sidebarToggle = document.getElementById("sidebarToggle");
@@ -20,7 +19,7 @@ function initCharts() {
   // Sales Chart
   const salesCtx = document.getElementById("salesChart");
   if (salesCtx) {
-    new Chart(salesCtx, {
+    const salesChart = new Chart(salesCtx, {
       type: "line",
       data: {
         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
@@ -40,7 +39,7 @@ function initCharts() {
         responsive: true,
         plugins: {
           legend: {
-            display: false,
+            display: true,
           },
           tooltip: {
             mode: "index",
@@ -48,21 +47,40 @@ function initCharts() {
           },
         },
         scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Months",
+            },
+          },
           y: {
             beginAtZero: true,
             ticks: {
               callback: (value) => "$" + value.toLocaleString(),
             },
+            title: {
+              display: true,
+              text: "Revenue",
+            },
           },
         },
       },
     });
+
+    // Example of updating the chart dynamically
+    setTimeout(() => {
+      salesChart.data.datasets[0].data = [
+        15000, 20000, 18000, 27000, 24000, 32000,
+      ];
+      salesChart.update();
+    }, 5000);
   }
 
   // Category Chart
   const categoriesCtx = document.getElementById("categoriesChart");
+  console.log(categoriesCtx);
   if (categoriesCtx) {
-    new Chart(categoriesCtx, {
+    const categoriesChart = new Chart(categoriesCtx, {
       type: "doughnut",
       data: {
         labels: ["Smartphones", "Laptops", "Tablets", "Accessories"],
@@ -80,9 +98,23 @@ function initCharts() {
           legend: {
             position: "bottom",
           },
+          tooltip: {
+            callbacks: {
+              label: (tooltipItem) => {
+                const value = tooltipItem.raw;
+                return `${tooltipItem.label}: ${value}%`;
+              },
+            },
+          },
         },
         cutout: "70%",
       },
     });
+
+    // Example of updating the chart dynamically
+    setTimeout(() => {
+      categoriesChart.data.datasets[0].data = [40, 20, 25, 15];
+      categoriesChart.update();
+    }, 5000);
   }
 }

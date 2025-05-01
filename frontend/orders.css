@@ -23,80 +23,6 @@
   align-items: center;
 }
 
-.order-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff; /* Add background color */
-}
-
-.order-table th,
-.order-table td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.order-table th {
-  background-color: #007bff;
-  color: white;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.order-table td {
-  font-size: 14px;
-  color: #555;
-}
-
-.order-table tbody tr:nth-child(odd) {
-  background-color: #f9f9f9;
-}
-
-.order-table tbody tr:hover {
-  background-color: #e9f5ff;
-}
-
-.order-table td button {
-  margin-right: 5px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
-}
-
-.order-table td button.view-button {
-  background-color: #28a745;
-  color: white;
-}
-
-.order-table td button.view-button:hover {
-  background-color: #218838;
-}
-
-.order-table td button.edit-button {
-  background-color: #17a2b8;
-  color: white;
-}
-
-.order-table td button.edit-button:hover {
-  background-color: #138496;
-}
-
-.order-table td button.delete-button {
-  background-color: #dc3545;
-  color: white;
-}
-
-.order-table td button.delete-button:hover {
-  background-color: #c82333;
-}
-
 .export-button {
   padding: 10px 20px; /* Match padding with Add New Order button */
   font-size: 16px; /* Match font size */
@@ -197,14 +123,19 @@
   cursor: pointer;
 }
 
-.btn-primary {
-  background-color: #007bff;
-  color: white;
-}
-
 .btn-secondary {
   background-color: #6c757d;
   border-radius: 5px;
   color: white;
   margin-left: 10px;
+}
+
+.table-cell button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }

@@ -25,25 +25,27 @@ function renderOrders() {
   orders.forEach((order, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td>${order.id}</td>
+      <td>ORD ${order.id}</td>
       <td>${order.customer}</td>
       <td>${order.date}</td>
       <td>${order.status}</td>
       <td>${order.total}</td>
       <td>
-        <button class="view-button">View</button>
-        <button class="edit-button">Edit</button>
-        <button class="delete-button">Delete</button>
+        <button class="btn btn-view">View</button>
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-danger">Delete</button>
       </td>
     `;
-    row.querySelector(".edit-button").addEventListener("click", () => {
-      editingOrderIndex = index; // Set the index of the order being edited
-      document.getElementById("customer-name").value = order.customer;
-      document.getElementById("order-status").value = order.status;
-      document.getElementById("order-total").value = order.total;
-      orderFormContainer.classList.remove("hidden"); // Show the form container
-    });
-    row.querySelector(".delete-button").addEventListener("click", () => {
+    row
+      .querySelector(".btn-primary:nth-child(2)")
+      .addEventListener("click", () => {
+        editingOrderIndex = index; // Set the index of the order being edited
+        document.getElementById("customer-name").value = order.customer;
+        document.getElementById("order-status").value = order.status;
+        document.getElementById("order-total").value = order.total;
+        orderFormContainer.classList.remove("hidden"); // Show the form container
+      });
+    row.querySelector(".btn-danger").addEventListener("click", () => {
       orders.splice(index, 1); // Remove the order from the array
       renderOrders(); // Re-render the table
     });
@@ -63,7 +65,7 @@ async function initializePage() {
   });
 
   orderForm.addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
 
     const customer = document.getElementById("customer-name").value;
     const status = document.getElementById("order-status").value;
@@ -77,7 +79,7 @@ async function initializePage() {
         orders[editingOrderIndex].total = total;
       } else {
         // Add new order
-        const id = `ORD${String(orders.length + 1).padStart(3, "0")}`;
+        const id = `${String(orders.length + 1)}`; // Correctly generate new order ID
         const date = new Date().toISOString().split("T")[0];
         orders.push({ id, customer, date, status, total });
       }

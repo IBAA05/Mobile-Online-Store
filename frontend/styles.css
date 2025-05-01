@@ -66,6 +66,13 @@ body {
   background-color: #dc2626;
 }
 
+.btn-view {
+  background-color: #1ce623;
+  color: white;
+}
+.btn-view:hover {
+  background-color: #10460d;
+}
 /****************************************************************************************/
 
 /* Sidebar */
@@ -113,6 +120,35 @@ body {
   font-weight: 600;
 }
 
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+.sidebar-menu {
+  margin-top: 1rem;
+  flex: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-button a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--gray-700);
+  text-decoration: none;
+}
+
+.sidebar-button a i {
+  width: 1.25rem;
+  text-align: center;
+}
+
 /****************************************************************************************/
 
 /* Header */
@@ -137,7 +173,8 @@ body {
 }
 
 /*********************************************************************************************/
-/* Products Table */
+/* All the  Tables */
+
 .products-header {
   display: flex;
   justify-content: space-between;
@@ -397,17 +434,6 @@ body {
   display: grid;
 }
 
-/* Grid columns */
-@media (min-width: 768px) {
-  .grid-cols-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .grid-cols-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 /* Images */
 .img-fluid {
   max-width: 100%;
@@ -477,28 +503,45 @@ body {
   color: var(--gray-800);
 }
 
-/* Grid System */
+/**************************************************************************/
+
+/* Card charts */
+
 .card-grid {
   display: grid;
   gap: 1.5rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Adjust for single row */
 }
 
-@media (min-width: 768px) {
-  .card-grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .card-grid-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.card-grid-2 {
+  display: grid;
+  margin: 20px;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr); /* Two columns for charts */
 }
+
+.stat-card-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Single row for stat cards */
+}
+
+/*********************************************************************************************************/
 
 /* Card Styles */
+
 .stat-card {
   background: white;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .stat-card-content {
@@ -531,37 +574,9 @@ body {
   font-size: 1.25rem;
 }
 
+/*********************************************************************************************************/
+
 /* Sidebar Header */
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  gap: 0.5rem;
-}
-
-.sidebar-menu {
-  margin-top: 1rem;
-  flex: 1;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-button a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  color: var(--gray-700);
-  text-decoration: none;
-}
-
-.sidebar-button a i {
-  width: 1.25rem;
-  text-align: center;
-}
-
-/* Table Styles */
 
 /* Section Header */
 .section-header {
@@ -585,7 +600,6 @@ body {
 
 /* Chart Container */
 .chart-container {
-  margin-top: 1rem;
   height: 300px;
 }
 
@@ -599,21 +613,4 @@ body {
 /* Text Styles */
 .text-muted {
   color: var(--gray-700);
-}
-
-/* Sidebar Toggle Button */
-.sidebar-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 40;
-  padding: 0.75rem;
-  border-radius: 50%;
-  background-color: var(--primary-500);
-  color: white;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

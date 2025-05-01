@@ -8,8 +8,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="orders.css" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="orders.css" />
   </head>
   <body class="main-container">
     <!-- The Sidebar -->
@@ -30,7 +30,7 @@
           </a>
         </li>
         <li class="sidebar-button">
-          <a href="customers.html"> <i class="fas fa-users"></i> Customers </a>
+          <a href="users.html"> <i class="fas fa-users"></i> Users </a>
         </li>
         <li class="sidebar-button">
           <a href="settings.html"> <i class="fas fa-cog"></i> Settings </a>
@@ -42,12 +42,8 @@
       <div class="header">
         <!-- The top bar(logout+ user+not) -->
         <div class="header-content">
-          <div class="logo-container">
-            <img
-              src="images/logo.png"
-              alt="TechHub Logo"
-              class="logo mobile-only"
-            />
+          <div class="header-title">
+            <h2>Orders</h2>
           </div>
           <div class="user-nav">
             <img
@@ -78,23 +74,26 @@
           </div>
         </div>
         <!-- The order table -->
-        <div class="order-table-container">
-          <table class="order-table">
-            <thead>
-              <tr>
-                <th>Order ID</th>
-                <th>Customer Name</th>
-                <th>Order Date</th>
-                <th>Status</th>
-                <th>Total</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="order-table-body">
-              <!-- The content will be dynamically using js -->
-            </tbody>
-          </table>
+        <div class="table-container">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th class="table-cell">Order ID</th>
+                  <th class="table-cell">Customer Name</th>
+                  <th class="table-cell">Order Date</th>
+                  <th class="table-cell">Status</th>
+                  <th class="table-cell">Total</th>
+                  <th class="table-cell">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="order-table-body" class="table-body">
+                <!-- The content will be dynamically using js -->
+              </tbody>
+            </table>
+          </div>
         </div>
+
         <!-- Order details container -->
         <div id="order-details-container" class="hidden"></div>
         <!-- Order Form -->

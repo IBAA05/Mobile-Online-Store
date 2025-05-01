@@ -18,10 +18,10 @@
         <img src="images/logo.png" alt="TechHub Logo" class="logo" />
       </div>
       <ul class="sidebar-menu">
-        <li class="sidebar-button">
+        <li class="sidebar-button active-sidebar">
           <a href="dashboard.html"> <i class="fas fa-box"></i> Dashboard </a>
         </li>
-        <li class="sidebar-button active-sidebar">
+        <li class="sidebar-button">
           <a href="products.html"> <i class="fas fa-box"></i> Products </a>
         </li>
         <li class="sidebar-button">
@@ -30,7 +30,7 @@
           </a>
         </li>
         <li class="sidebar-button">
-          <a href="customers.html"> <i class="fas fa-users"></i> Customers </a>
+          <a href="users.html"> <i class="fas fa-users"></i> Users </a>
         </li>
         <li class="sidebar-button">
           <a href="settings.html"> <i class="fas fa-cog"></i> Settings </a>
@@ -58,9 +58,8 @@
         </div>
       </div>
       <div class="main-content">
-        
-        <div class="card-grid card-grid-3">
-          <!-- Stats Cards -->
+        <!-- Stats Cards -->
+        <div class="stat-card-grid">
           <div class="stat-card">
             <div class="stat-card-content">
               <div class="stat-info">
@@ -95,33 +94,24 @@
             </div>
           </div>
         </div>
-        <div class="card-grid card-grid-2">
-          <!-- Charts -->
-          <div class="stat-card">
-            <h3 class="section-title">Sales Overview</h3>
-            <div class="chart-container">
-              <canvas id="salesChart"></canvas>
-            </div>
+      </div>
+      <div class="card-grid card-grid-2">
+        <!-- Charts -->
+        <div class="stat-card">
+          <h3 class="section-title">Sales Overview</h3>
+          <div class="chart-container">
+            <canvas id="salesChart"></canvas>
           </div>
-          <div class="stat-card">
-            <h3 class="section-title">Product Categories</h3>
-            <div class="chart-container">
-              <canvas id="categoriesChart"></canvas>
-            </div>
+        </div>
+        <div class="stat-card">
+          <h3 class="section-title">Product Categories</h3>
+          <div class="chart-container">
+            <canvas id="categoriesChart"></canvas>
           </div>
         </div>
       </div>
     </div>
-    <script>
-      const sidebar = document.getElementById("sidebar");
-      const sidebarToggle = document.getElementById("sidebarToggle");
 
-      if (sidebarToggle) {
-        sidebarToggle.addEventListener("click", () => {
-          sidebar.classList.toggle("sidebar-show");
-        });
-      }
-    </script>
-    <script src="dashboard.js"></script>
+    <script src="js/dashboard.js"></script>
   </body>
 </html>

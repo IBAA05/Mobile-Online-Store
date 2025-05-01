@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body class="main-container">
+    <!-- The Sidebar -->
+
+    <div id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <img src="images/logo.png" alt="TechHub Logo" class="logo" />
+      </div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-button">
+          <a href="dashboard.html"> <i class="fas fa-box"></i> Dashboard </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="products.html"> <i class="fas fa-box"></i> Products </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="orders.html">
+            <i class="fas fa-shopping-cart"></i> Orders
+          </a>
+        </li>
+        <li class="sidebar-button active-sidebar">
+          <a href="users.html"> <i class="fas fa-users"></i> Users </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="settings.html"> <i class="fas fa-cog"></i> Settings </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="content-wrapper">
+      <!-- The Order content -->
+      <div class="header">
+        <!-- The top bar(logout+ user+not) -->
+        <div class="header-content">
+          <div class="header-title">
+            <h2>Users</h2>
+          </div>
+          <div class="user-nav">
+            <img
+              src="images/notification.jpg"
+              alt="Notification"
+              class="notification-icon"
+            />
+            <img src="images/user.jpeg" alt="User" class="user-avatar" />
+            <button class="btn btn-primary">Logout</button>
+          </div>
+        </div>
+      </div>
+      <!-- The Main content -->
+      <main class="main-content">
+        <div class="section-header">
+          <h3 class="page-title">Users List</h3>
+        </div>
+
+        <div class="table-container">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody class="table-body">
+                <!-- The content will be displayed using js  -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="js/users.js"></script>
+  </body>
+</html>
