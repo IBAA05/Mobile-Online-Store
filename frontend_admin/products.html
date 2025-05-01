@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Products - TechHub Admin</title>
+  </head>
+  <body class="main-container">
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <img src="images/logo.png" alt="TechHub Logo" class="logo" />
+      </div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-button">
+          <a href="dashboard.html"> <i class="fas fa-box"></i> Dashboard </a>
+        </li>
+        <li class="sidebar-button active-sidebar">
+          <a href="products.html"> <i class="fas fa-box"></i> Products </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="orders.html">
+            <i class="fas fa-shopping-cart"></i> Orders
+          </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="users.html"> <i class="fas fa-users"></i> Users </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="settings.html"> <i class="fas fa-cog"></i> Settings </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+      <!-- Header -->
+      <div class="header">
+        <div class="header-content">
+          <div class="header-title">
+            <h2>Products</h2>
+          </div>
+          <div class="user-nav">
+            <img
+              src="images/notification.jpg"
+              alt="Notification"
+              class="notification-icon"
+            />
+            <img src="images/user.jpeg" alt="User" class="user-avatar" />
+            <button class="btn btn-primary">Logout</button>
+          </div>
+        </div>
+      </div>
+
+      <main class="main-content">
+        <!-- Products Header -->
+        <div class="products-header">
+          <h2 class="">Products List</h2>
+          <div class="actions-group">
+            <div class="select-wrapper">
+              <select id="categoryFilter" class="form-control">
+                <option value="">All Categories</option>
+                <option value="electronics">Electronics</option>
+                <option value="phones">Phones</option>
+                <option value="accessories">Accessories</option>
+              </select>
+              <div class="select-icon">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
+            <button class="btn btn-primary" id="addProductBtn">
+              + Add Product
+            </button>
+          </div>
+        </div>
+        <!-- Products Table -->
+        <div class="table-container">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="productsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Add Product Features-->
+    <div class="modal-backdrop" id="addProductModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 class="modal-title">Add New Product</h3>
+          <button class="modal-close" id="closeModalBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="addProductForm">
+            <div class="form-group">
+              <label class="form-label" for="productName">Product Name</label>
+              <input
+                type="text"
+                id="productName"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="productBrand">Brand</label>
+              <input
+                type="text"
+                id="productBrand"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="productCategory">Category</label>
+              <select id="productCategory" class="form-control" required>
+                <option value="">Select Category</option>
+                <option value="Smartphones">Smartphones</option>
+                <option value="Laptops">Laptops</option>
+                <option value="Tablets">Tablets</option>
+                <option value="Accessories">Accessories</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="productPrice">Price</label>
+              <input
+                type="number"
+                id="productPrice"
+                class="form-control"
+                step="0.01"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="productQuantity">Quantity</label>
+              <input
+                type="number"
+                id="productQuantity"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="productDescription"
+                >Description</label
+              >
+              <textarea
+                id="productDescription"
+                class="form-control"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="productImage"
+                >Product Image URL</label
+              >
+              <input
+                type="url"
+                id="productImage"
+                class="form-control"
+                required
+              />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="saveProductBtn">
+            Save Product
+          </button>
+          <button class="btn" id="cancelBtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/products.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechHub Admin - Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="main-container">
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <img src="images/logo.png" alt="TechHub Logo" class="logo" />
+      </div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-button active-sidebar">
+          <a href="dashboard.html"> <i class="fas fa-box"></i> Dashboard </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="products.html"> <i class="fas fa-box"></i> Products </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="orders.html">
+            <i class="fas fa-shopping-cart"></i> Orders
+          </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="users.html"> <i class="fas fa-users"></i> Users </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="settings.html"> <i class="fas fa-cog"></i> Settings </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+      <!-- Header -->
+      <div class="header">
+        <div class="header-content">
+          <div class="header-title">
+            <h2>Dashboard</h2>
+          </div>
+          <div class="user-nav">
+            <img
+              src="images/notification.jpg"
+              alt="Notification"
+              class="notification-icon"
+            />
+            <img src="images/user.jpeg" alt="User" class="user-avatar" />
+            <button class="btn btn-primary">Logout</button>
+          </div>
+        </div>
+      </div>
+      <div class="main-content">
+        <!-- Stats Cards -->
+        <div class="stat-card-grid">
+          <div class="stat-card">
+            <div class="stat-card-content">
+              <div class="stat-info">
+                <p class="stat-label">Total Products</p>
+                <h3 class="stat-value">1,234</h3>
+              </div>
+              <div class="stat-icon">
+                <i class="fas fa-box"></i>
+              </div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-content">
+              <div class="stat-info">
+                <p class="stat-label">Current Orders</p>
+                <h3 class="stat-value">56</h3>
+              </div>
+              <div class="stat-icon">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-content">
+              <div class="stat-info">
+                <p class="stat-label">Active Users</p>
+                <h3 class="stat-value">789</h3>
+              </div>
+              <div class="stat-icon">
+                <i class="fas fa-users"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-grid card-grid-2">
+        <!-- Charts -->
+        <div class="stat-card">
+          <h3 class="section-title">Sales Overview</h3>
+          <div class="chart-container">
+            <canvas id="salesChart"></canvas>
+          </div>
+        </div>
+        <div class="stat-card">
+          <h3 class="section-title">Product Categories</h3>
+          <div class="chart-container">
+            <canvas id="categoriesChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

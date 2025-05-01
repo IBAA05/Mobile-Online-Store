@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechHub Admin - Orders</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="orders.css" />
+  </head>
+  <body class="main-container">
+    <!-- The Sidebar -->
+    <div id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <img src="images/logo.png" alt="TechHub Logo" class="logo" />
+      </div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-button">
+          <a href="dashboard.html"> <i class="fas fa-box"></i> Dashboard </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="products.html"> <i class="fas fa-box"></i> Products </a>
+        </li>
+        <li class="sidebar-button active-sidebar">
+          <a href="orders.html">
+            <i class="fas fa-shopping-cart"></i> Orders
+          </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="users.html"> <i class="fas fa-users"></i> Users </a>
+        </li>
+        <li class="sidebar-button">
+          <a href="settings.html"> <i class="fas fa-cog"></i> Settings </a>
+        </li>
+      </ul>
+    </div>
+    <div class="content-wrapper">
+      <!-- The Order content -->
+      <div class="header">
+        <!-- The top bar(logout+ user+not) -->
+        <div class="header-content">
+          <div class="header-title">
+            <h2>Orders</h2>
+          </div>
+          <div class="user-nav">
+            <img
+              src="images/notification.jpg"
+              alt="Notification"
+              class="notification-icon"
+            />
+            <img src="images/user.jpeg" alt="User" class="user-avatar" />
+            <button class="btn btn-primary">Logout</button>
+          </div>
+        </div>
+      </div>
+      <main class="main-content">
+        <!-- Top bar -->
+        <div class="top-bar">
+          <input
+            type="text"
+            class="search-bar"
+            placeholder="Search orders..."
+          />
+          <div class="export-container">
+            <button class="btn btn-secondary export-button">
+              <i class="fas fa-download"></i> Export
+            </button>
+            <button class="btn btn-primary add-order-button">
+              Add New Order
+            </button>
+          </div>
+        </div>
+        <!-- The order table -->
+        <div class="table-container">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th class="table-cell">Order ID</th>
+                  <th class="table-cell">Customer Name</th>
+                  <th class="table-cell">Order Date</th>
+                  <th class="table-cell">Status</th>
+                  <th class="table-cell">Total</th>
+                  <th class="table-cell">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="order-table-body" class="table-body">
+                <!-- The content will be dynamically using js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Order details container -->
+        <div id="order-details-container" class="hidden"></div>
+        <!-- Order Form -->
+        <div id="order-form-container" class="hidden">
+          <form id="order-form" class="order-form">
+            <h3>Add New Order</h3>
+            <label for="customer-name">Customer Name:</label>
+            <input type="text" id="customer-name" required />
+            <label for="order-status">Order Status:</label>
+            <select id="order-status" required>
+              <option value="Pending">Pending</option>
+              <option value="Shipped">Shipped</option>
+              <option value="Delivered">Delivered</option>
+            </select>
+            <label for="order-total">Order Total:</label>
+            <input type="text" id="order-total" required />
+            <button type="submit" class="btn btn-primary">Add Order</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              id="cancel-order-form"
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
+      </main>
+    </div>
+    <script src="js/orders.js"></script>
+    <script>
+      // Make the add order container hidden in cancel
+      document
+        .getElementById("cancel-order-form")
+        .addEventListener("click", () => {
+          document
+            .getElementById("order-form-container")
+            .classList.add("hidden");
+        });
+    </script>
+  </body>
+</html>
