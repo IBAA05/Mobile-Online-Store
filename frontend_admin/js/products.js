@@ -1,4 +1,5 @@
 const categoryFilter = document.getElementById("categoryFilter");
+const stockFilter = document.getElementById("stockFilter");
 const productsTableBody = document.getElementById("productsTableBody");
 const addProductBtn = document.getElementById("addProductBtn");
 const addProductModal = document.getElementById("addProductModal");
@@ -19,7 +20,6 @@ async function fetchProducts() {
   }
 }
 
-// Get unique product categories
 function getUniqueCategories(products) {
   return [...new Set(products.map((product) => product.category))];
 }
@@ -34,11 +34,31 @@ function populateCategoryFilter(categories) {
   `;
 }
 
+// Filter products based on current filter values.
+function filterProducts(products) {
+  const selectedCategory = categoryFilter.value;
+  const selectedStockStatus = stockFilter.value;
+
+  return products.filter((product) => {
+    const matchesCategory =
+      !selectedCategory || product.category === selectedCategory;
+    const isInStock = product.quantity > 0;
+    const matchesStock =
+      !selectedStockStatus ||
+      (selectedStockStatus === "in-stock" && isInStock) ||
+      (selectedStockStatus === "out-of-stock" && !isInStock);
+
+    return matchesCategory && matchesStock;
+  });
+}
+
 // Render products in table
 function renderProducts(products) {
   productsTableBody.innerHTML = "";
+  const filteredProducts = filterProducts(products);
 
-  products.forEach((product) => {
+  filteredProducts.forEach((product) => {
+    const isInStock = product.quantity > 0;
     const row = document.createElement("tr");
 
     row.innerHTML = `
@@ -57,8 +77,8 @@ function renderProducts(products) {
       <td>$${product.price.toFixed(2)}</td>
       <td>${product.quantity}</td>
       <td>
-        <span class="product-status">
-          ${product.quantity > 0 ? "In Stock" : "Out of Stock"}
+        <span class="product-status ${isInStock ? "active" : ""}">
+          ${isInStock ? "In Stock" : "Out of Stock"}
         </span>
       </td>
       <td>
@@ -78,16 +98,10 @@ async function initializePage() {
   populateCategoryFilter(categories);
   renderProducts(products);
 
-  categoryFilter.addEventListener("change", (event) => {
-    const selectedCategory = event.target.value;
-    const filteredProducts = selectedCategory
-      ? products.filter((product) => product.category === selectedCategory)
-      : products;
-    renderProducts(filteredProducts);
-  });
+  // Add event listeners for filters
+  categoryFilter.addEventListener("change", () => renderProducts(products));
+  stockFilter.addEventListener("change", () => renderProducts(products));
 }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Add Product features */
 
@@ -125,7 +139,7 @@ saveProductBtn.addEventListener("click", async () => {
     description: document.getElementById("productDescription").value,
     images: [document.getElementById("productImage").value],
   };
-  /* add more products*/
+
   const products = await fetchProducts();
   products.push(newProduct);
   renderProducts(products);

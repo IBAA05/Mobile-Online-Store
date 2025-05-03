@@ -247,6 +247,8 @@ header {
 .logo {
     display: flex;
     align-items: center;
+
+
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--Dark-Bleu);

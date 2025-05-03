@@ -74,6 +74,16 @@
                 <i class="fas fa-chevron-down"></i>
               </div>
             </div>
+            <div class="select-wrapper">
+              <select id="stockFilter" class="form-control">
+                <option value="">All Stock Status</option>
+                <option value="in-stock">In Stock</option>
+                <option value="out-of-stock">Out of Stock</option>
+              </select>
+              <div class="select-icon">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
             <button class="btn btn-primary" id="addProductBtn">
               + Add Product
             </button>
@@ -191,5 +201,29 @@
 
     <script src="js/products.js"></script>
     <script src="js/dashboard.js"></script>
+    <script>
+      document
+        .getElementById("stockFilter")
+        .addEventListener("change", function () {
+          const filterValue = this.value;
+          const rows = document.querySelectorAll("#productsTableBody tr");
+          rows.forEach((row) => {
+            const stockCell = row.querySelector(".product-status");
+            if (
+              filterValue === "in-stock" &&
+              !stockCell.classList.contains("active")
+            ) {
+              row.style.display = "none";
+            } else if (
+              filterValue === "out-of-stock" &&
+              stockCell.classList.contains("active")
+            ) {
+              row.style.display = "none";
+            } else {
+              row.style.display = "";
+            }
+          });
+        });
+    </script>
   </body>
 </html>
