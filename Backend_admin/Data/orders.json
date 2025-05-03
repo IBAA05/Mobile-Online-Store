@@ -1,0 +1,46 @@
+{
+    "orders": [
+        {
+            "id": "1",
+            "customer": "John Doe",
+            "date": "2023-10-01",
+            "status": "Pending",
+            "total": "$120.00"
+        },
+        {
+            "id": "2",
+            "customer": "Jane Smith",
+            "date": "2023-10-02",
+            "status": "Shipped",
+            "total": "$250.00"
+        },
+        {
+            "id": "3",
+            "customer": "Michael Brown",
+            "date": "2023-10-03",
+            "status": "Delivered",
+            "total": "$71.00"
+        },
+        {
+            "customer": "John Doe",
+            "items": [
+                {
+                    "product_id": 1,
+                    "name": "iPhone 13 Pro",
+                    "price": 999.99,
+                    "quantity": 2
+                },
+                {
+                    "product_id": 6,
+                    "name": "AirPods Pro",
+                    "price": 249.99,
+                    "quantity": 1
+                }
+            ],
+            "date": "2025-05-03",
+            "status": "Pending",
+            "total": 2249.9700000000003,
+            "id": 4
+        }
+    ]
+}
