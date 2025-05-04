@@ -464,7 +464,6 @@ body {
 }
 
 .logo {
-  
   height: 40px;
   object-fit: contain;
 }
@@ -620,3 +619,98 @@ body {
 .text-muted {
   color: var(--gray-700);
 }
+
+/*************************************************************************************/
+/* Products Responsive Styles */
+
+@media (max-width: 768px) {
+  .products-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .actions-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .select-wrapper {
+    width: 100%;
+  }
+
+  #addProductBtn {
+    width: 100%;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  .data-table td {
+    padding: 0.75rem;
+  }
+
+  .data-table td:first-child {
+    min-width: 200px;
+  }
+
+  .data-table td:nth-child(2) {
+    min-width: 100px;
+  }
+
+  .data-table td:nth-child(3) {
+    min-width: 80px;
+  }
+
+  .data-table td:nth-child(4) {
+    min-width: 80px;
+  }
+
+  .data-table td:nth-child(5) {
+    min-width: 120px;
+  }
+
+  .data-table td:nth-child(6) {
+    min-width: 100px;
+  }
+
+  /* Modal responsive styles */
+  .modal {
+    width: 95%;
+    margin: 1rem;
+  }
+
+  .modal-body {
+    padding: 1rem;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .modal-footer button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .user-nav {
+    justify-content: center;
+  }
+
+  .data-table th,
+  .data-table td {
+    font-size: 0.875rem;
+  }
+}
+
+/****************************************************************************************/

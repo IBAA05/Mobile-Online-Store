@@ -1,7 +1,11 @@
+import { jsonToCsv, showNotification } from "./utils.js";
+
 const orderTableBody = document.getElementById("order-table-body");
 const addOrderButton = document.querySelector(".add-order-button");
 const orderFormContainer = document.getElementById("order-form-container");
 const orderForm = document.getElementById("order-form");
+const searchInput = document.querySelector(".search-bar");
+const exportButton = document.querySelector(".export-button");
 
 let orders = [];
 let editingOrderIndex = null; // Track the order being edited
@@ -19,21 +23,33 @@ async function fetchOrders() {
   }
 }
 
-// Render orders in table
-function renderOrders() {
+function searchOrders(query) {
+  query = query.toLowerCase();
+  return orders.filter(
+    (order) =>
+      `ord ${order.id}`.toLowerCase().includes(query) ||
+      order.customer.toLowerCase().includes(query) ||
+      order.status.toLowerCase().includes(query)
+  );
+}
+
+// Modify the renderOrders function to accept a filtered array
+function renderOrders(ordersToRender = orders) {
   orderTableBody.innerHTML = ""; // Clear existing rows
-  orders.forEach((order, index) => {
+  ordersToRender.forEach((order, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td>ORD ${order.id}</td>
-      <td>${order.customer}</td>
-      <td>${order.date}</td>
-      <td>${order.status}</td>
-      <td>${order.total}</td>
-      <td>
-        <button class="btn btn-view">View</button>
-        <button class="btn btn-primary">Edit</button>
-        <button class="btn btn-danger">Delete</button>
+      <td data-label="Order ID">ORD ${order.id}</td>
+      <td data-label="Customer">${order.customer}</td>
+      <td data-label="Date">${order.date}</td>
+      <td data-label="Status">${order.status}</td>
+      <td data-label="Total">${order.total}</td>
+      <td data-label="Actions">
+        <div class="action-buttons">
+          <button class="btn btn-view">View</button>
+          <button class="btn btn-primary">Edit</button>
+          <button class="btn btn-danger">Delete</button>
+        </div>
       </td>
     `;
     row
@@ -57,6 +73,12 @@ function renderOrders() {
 async function initializePage() {
   orders = await fetchOrders();
   renderOrders();
+
+  // Add search functionality
+  searchInput.addEventListener("input", (e) => {
+    const filteredOrders = searchOrders(e.target.value);
+    renderOrders(filteredOrders);
+  });
 
   addOrderButton.addEventListener("click", () => {
     editingOrderIndex = null; // Reset editing index
@@ -86,6 +108,14 @@ async function initializePage() {
       renderOrders();
       orderFormContainer.classList.add("hidden"); // Hide the form container
       orderForm.reset();
+    }
+  });
+  // Export functionality
+  exportButton.addEventListener("click", () => {
+    if (jsonToCsv(orders)) {
+      showNotification("File exported successfully!");
+    } else {
+      showNotification("Failed to export file", "error");
     }
   });
 }

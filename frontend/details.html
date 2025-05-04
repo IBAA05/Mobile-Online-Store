@@ -59,15 +59,15 @@
                     <div class="storage-selection">
                         <span>Select storage:</span>
                         <div class="storage-options">
-                            <button class="storage-btn">256GB</button>
-                            <button class="storage-btn">512GB</button>
-                            <button class="storage-btn">1TB</button>                        
-                          </div>
+                            <button class="storage-btn" data-storage="256GB" data-price="1399">256GB</button>
+                            <button class="storage-btn" data-storage="512GB" data-price="1599">512GB</button>
+                            <button class="storage-btn" data-storage="1TB" data-price="1799">1TB</button>                        
+                        </div>
                     </div>
                 </div>
                 <div class="buttons">
-                    <button class="wishlist">Add to Wishlist</button>
-                    <button class="cart">Add to Cart</button>
+                    <button class="wishlist" id="wishlistBtn">Add to Wishlist</button>
+                    <button class="cart" id="addToCartBtn">Add to Cart</button>
                 </div>
                 <div class="delivery-options">
                     <span>Free Delivery</span>
@@ -253,6 +253,7 @@
         <p>© Ibaa All Right Reserved.</p>
     </div>
 </div>
+<script src="cart.js"></script>
 <script src="products.js"></script>
 <script src="database.js"></script>
 </body>

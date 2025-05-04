@@ -82,7 +82,7 @@ function renderProducts(products) {
         </span>
       </td>
       <td>
-        <button>Details</button>
+        <button class="btn btn-primary">Details</button>
       </td>
     `;
 
