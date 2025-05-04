@@ -11,6 +11,10 @@ switch ($method) {
     case 'GET':
         if ($productId) {
             $controller->getProduct($productId);
+        } elseif (isset($_GET['search'])) {
+            $controller->searchProducts($_GET['search']);
+        } elseif (!empty($_GET)) {
+            $controller->filterProducts();
         } else {
             $controller->getAllProducts();
         }

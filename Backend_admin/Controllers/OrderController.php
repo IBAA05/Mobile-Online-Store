@@ -2,11 +2,18 @@
 require_once __DIR__ . '/../models/Order.php';
 
 class OrderController {
+    /**
+     * Get all orders
+     */
     public function getAllOrders() {
         header('Content-Type: application/json');
         echo json_encode(Order::getAll());
     }
     
+    /**
+     * Get single order
+     * @param int $id Order ID
+     */
     public function getOrder($id) {
         header('Content-Type: application/json');
         $order = Order::getById($id);
@@ -18,28 +25,28 @@ class OrderController {
         }
     }
     
+    /**
+     * Create new order
+     */
     public function createOrder() {
         header('Content-Type: application/json');
         $input = json_decode(file_get_contents('php://input'), true);
         
-        if (empty($input['customer']) || empty($input['items'])) {
+        if (empty($input['customer']['name']) || empty($input['items'])) {
             http_response_code(400);
             echo json_encode(['error' => 'Missing required fields']);
             return;
         }
-        
-        // Set default values
-        $input['date'] = date('Y-m-d');
-        $input['status'] = 'Pending';
-        $input['total'] = array_reduce($input['items'], function($sum, $item) {
-            return $sum + ($item['price'] * $item['quantity']);
-        }, 0);
         
         $newOrder = Order::create($input);
         http_response_code(201);
         echo json_encode($newOrder);
     }
     
+    /**
+     * Update order status
+     * @param int $id Order ID
+     */
     public function updateOrderStatus($id) {
         header('Content-Type: application/json');
         $input = json_decode(file_get_contents('php://input'), true);
@@ -50,7 +57,9 @@ class OrderController {
             return;
         }
         
-        $updatedOrder = Order::updateStatus($id, $input['status']);
+        $notes = $input['notes'] ?? '';
+        $updatedOrder = Order::updateStatus($id, $input['status'], $notes);
+        
         if ($updatedOrder) {
             echo json_encode($updatedOrder);
         } else {
@@ -59,10 +68,30 @@ class OrderController {
         }
     }
     
+    /**
+     * Get customer orders
+     * @param string $customerName Customer name
+     */
     public function getCustomerOrders($customerName) {
         header('Content-Type: application/json');
         $orders = Order::getByCustomer($customerName);
         echo json_encode(array_values($orders));
+    }
+    
+    /**
+     * Export order history
+     * @param int $id Order ID
+     */
+    public function exportOrderHistory($id) {
+        $csv = Order::exportHistory($id);
+        if ($csv) {
+            header('Content-Type: text/csv');
+            header('Content-Disposition: attachment; filename="order_' . $id . '_history.csv"');
+            echo $csv;
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'Order not found']);
+        }
     }
 }
 ?>

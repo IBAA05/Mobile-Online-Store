@@ -6,13 +6,18 @@ $method = $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode('/', $uri);
 
-// Extract ID or customer name from URL
+// Extract parameters
 $param = $uri[3] ?? null;
+$action = $uri[4] ?? null;
 
 switch ($method) {
     case 'GET':
         if ($param && is_numeric($param)) {
-            $controller->getOrder($param);
+            if ($action === 'export') {
+                $controller->exportOrderHistory($param);
+            } else {
+                $controller->getOrder($param);
+            }
         } elseif ($param) {
             $controller->getCustomerOrders($param);
         } else {

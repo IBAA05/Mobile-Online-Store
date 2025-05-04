@@ -1,46 +1,95 @@
 {
     "orders": [
         {
-            "id": "1",
-            "customer": "John Doe",
+            "id": 1,
+            "customer": {
+                "name": "John Doe",
+                "email": "john@example.com",
+                "phone": "+1234567890"
+            },
             "date": "2023-10-01",
-            "status": "Pending",
-            "total": "$120.00"
-        },
-        {
-            "id": "2",
-            "customer": "Jane Smith",
-            "date": "2023-10-02",
             "status": "Shipped",
-            "total": "$250.00"
-        },
-        {
-            "id": "3",
-            "customer": "Michael Brown",
-            "date": "2023-10-03",
-            "status": "Delivered",
-            "total": "$71.00"
-        },
-        {
-            "customer": "John Doe",
             "items": [
                 {
                     "product_id": 1,
-                    "name": "iPhone 13 Pro",
-                    "price": 999.99,
-                    "quantity": 2
-                },
-                {
-                    "product_id": 6,
-                    "name": "AirPods Pro",
-                    "price": 249.99,
+                    "title": "iPhone 16 Pro Max",
+                    "variant": "256GB",
+                    "price": 32000,
                     "quantity": 1
                 }
             ],
-            "date": "2025-05-03",
+            "total": 32000,
+            "history": [
+                {
+                    "status": "Pending",
+                    "date": "2023-10-01",
+                    "notes": "Order received"
+                },
+                {
+                    "status": "Shipped",
+                    "date": "2025-05-04",
+                    "notes": "Dispatched via FedEx"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "customer": {
+                "name": "Jane Smith",
+                "email": "jane@example.com",
+                "phone": "+1987654321"
+            },
+            "date": "2023-10-02",
+            "status": "Shipped",
+            "items": [
+                {
+                    "product_id": 2,
+                    "title": "Galaxy S24 Ultra",
+                    "variant": "512GB",
+                    "price": 37000,
+                    "quantity": 2
+                }
+            ],
+            "total": 74000,
+            "history": [
+                {
+                    "status": "Pending",
+                    "date": "2023-10-02",
+                    "notes": "Order received"
+                },
+                {
+                    "status": "Shipped",
+                    "date": "2023-10-03",
+                    "notes": "Dispatched via DHL"
+                }
+            ]
+        },
+        {
+            "customer": {
+                "name": "Alice Johnson",
+                "email": "alice@example.com",
+                "phone": "+1555123456"
+            },
+            "items": [
+                {
+                    "product_id": 1,
+                    "title": "iPhone 16 Pro Max",
+                    "variant": "512GB",
+                    "price": 37000,
+                    "quantity": 1
+                }
+            ],
+            "id": 3,
+            "date": "2025-05-04",
             "status": "Pending",
-            "total": 2249.9700000000003,
-            "id": 4
+            "history": [
+                {
+                    "status": "Pending",
+                    "date": "2025-05-04",
+                    "notes": "Order received"
+                }
+            ],
+            "total": 37000
         }
     ]
 }
