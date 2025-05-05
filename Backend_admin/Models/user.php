@@ -2,196 +2,175 @@
 require_once __DIR__ . '/../utils/JsonHandler.php';
 
 class User {
-    /**
-     * Get all users
-     * @return array List of users
-     */
+    private static $usersFile = 'users.json';
+    
     public static function getAll() {
-        $data = JsonHandler::readJson('users.json');
-        return $data['users'] ?? [];
+        $data = JsonHandler::readJson(self::$usersFile);
+        $users = $data['users'] ?? [];
+        
+        // Remove passwords from returned data
+        return array_map(function($user) {
+            unset($user['password']);
+            return $user;
+        }, $users);
     }
     
-    /**
-     * Get user by ID
-     * @param int $id User ID
-     * @return array|null User data or null if not found
-     */
-    public static function getById($id) {
-        $users = self::getAll();
+    public static function getById($id, $includePassword = false) {
+        $users = JsonHandler::readJson(self::$usersFile)['users'] ?? [];
         foreach ($users as $user) {
             if ($user['id'] == $id) {
+                if (!$includePassword) {
+                    unset($user['password']);
+                }
                 return $user;
             }
         }
         return null;
     }
     
-    /**
-     * Get user by email
-     * @param string $email User email
-     * @return array|null User data or null if not found
-     */
-    public static function getByEmail($email) {
-        $users = self::getAll();
+    public static function getByEmail($email, $includePassword = false) {
+        $users = JsonHandler::readJson(self::$usersFile)['users'] ?? [];
         foreach ($users as $user) {
             if (strtolower($user['email']) === strtolower($email)) {
+                if (!$includePassword) {
+                    unset($user['password']);
+                }
                 return $user;
             }
         }
         return null;
     }
     
-    /**
-     * Create new user
-     * @param array $userData User data
-     * @return array Created user
-     * @throws Exception If validation fails
-     */
     public static function create($userData) {
-        $users = self::getAll();
+        $data = JsonHandler::readJson(self::$usersFile);
+        $users = $data['users'] ?? [];
         
-        // Validate required fields
-        if (empty($userData['name']) || empty($userData['email']) || empty($userData['password'])) {
-            throw new Exception('Name, email and password are required');
+        // Validation
+        if (empty($userData['name'])) {
+            throw new Exception('Name is required');
         }
         
-        // Validate email format
-        if (!filter_var($userData['email'], FILTER_VALIDATE_EMAIL)) {
-            throw new Exception('Invalid email format');
+        if (empty($userData['email']) || !filter_var($userData['email'], FILTER_VALIDATE_EMAIL)) {
+            throw new Exception('Valid email is required');
         }
         
-        // Check if email exists
-        if (self::getByEmail($userData['email'])) {
+        if (empty($userData['password']) || strlen($userData['password']) < 8) {
+            throw new Exception('Password must be at least 8 characters');
+        }
+        
+        if (self::getByEmail($userData['email'], true)) {
             throw new Exception('Email already exists');
         }
 
-        // Hash password
-        $userData['password'] = password_hash($userData['password'], PASSWORD_DEFAULT);
-        
-        // Set default role if not provided
-        if (!isset($userData['role'])) {
-            $userData['role'] = 'user';
-        }
-        
-        // Set default status if not provided
-        if (!isset($userData['status'])) {
-            $userData['status'] = 'active';
-        }
+        // Prepare user data (store password in plaintext)
+        $newUser = [
+            'id' => JsonHandler::getNextId($users),
+            'name' => trim($userData['name']),
+            'email' => strtolower(trim($userData['email'])),
+            'password' => $userData['password'], // Store plaintext password
+            'role' => $userData['role'] ?? 'client', // Default role is now 'client'
+            'status' => $userData['status'] ?? 'active',
+            'created_at' => date('Y-m-d H:i:s')
+        ];
 
-        $newId = JsonHandler::getNextId($users);
-        $userData['id'] = $newId;
-        $users[] = $userData;
-        JsonHandler::writeJson('users.json', ['users' => $users]);
-        return $userData;
+        $users[] = $newUser;
+        JsonHandler::writeJson(self::$usersFile, ['users' => $users]);
+        
+        // Don't return password
+        unset($newUser['password']);
+        return $newUser;
     }
     
-    /**
-     * Update user
-     * @param int $id User ID
-     * @param array $userData Updated user data
-     * @return array Updated user
-     * @throws Exception If user not found
-     */
-    public static function update($id, $userData) {
-        $users = self::getAll();
+    public static function update($id, $updateData) {
+        $data = JsonHandler::readJson(self::$usersFile);
+        $users = $data['users'] ?? [];
+        $found = false;
+        
         foreach ($users as &$user) {
             if ($user['id'] == $id) {
-                // Don't allow changing email if provided
-                if (isset($userData['email']) && $userData['email'] !== $user['email']) {
+                $found = true;
+                
+                // Prevent email changes
+                if (isset($updateData['email']) && $updateData['email'] !== $user['email']) {
                     throw new Exception('Email cannot be changed');
                 }
                 
-                // Hash new password if provided
-                if (isset($userData['password'])) {
-                    $userData['password'] = password_hash($userData['password'], PASSWORD_DEFAULT);
+                // Update password in plaintext if provided
+                if (!empty($updateData['password'])) {
+                    if (strlen($updateData['password']) < 8) {
+                        throw new Exception('Password must be at least 8 characters');
+                    }
+                    $user['password'] = $updateData['password']; // Store plaintext password
                 }
                 
-                $user = array_merge($user, $userData);
-                JsonHandler::writeJson('users.json', ['users' => $users]);
-                return $user;
+                // Update other fields
+                if (!empty($updateData['name'])) {
+                    $user['name'] = trim($updateData['name']);
+                }
+                
+                if (isset($updateData['status'])) {
+                    $user['status'] = $updateData['status'];
+                }
+                
+                $user['updated_at'] = date('Y-m-d H:i:s');
+                break;
             }
         }
-        throw new Exception('User not found');
-    }
-    
-    /**
-     * Delete user
-     * @param int $id User ID
-     * @return bool True if deleted
-     * @throws Exception If user not found
-     */
-    public static function delete($id) {
-        $users = self::getAll();
-        $newUsers = array_filter($users, function($user) use ($id) {
-            return $user['id'] != $id;
-        });
         
-        if (count($users) === count($newUsers)) {
+        if (!$found) {
             throw new Exception('User not found');
         }
         
-        JsonHandler::writeJson('users.json', ['users' => array_values($newUsers)]);
+        JsonHandler::writeJson(self::$usersFile, ['users' => $users]);
+        
+        // Return updated user without password
+        $updatedUser = $user;
+        unset($updatedUser['password']);
+        return $updatedUser;
+    }
+    
+    public static function delete($id) {
+        $data = JsonHandler::readJson(self::$usersFile);
+        $users = $data['users'] ?? [];
+        $initialCount = count($users);
+        
+        $users = array_filter($users, function($user) use ($id) {
+            return $user['id'] != $id;
+        });
+        
+        if (count($users) === $initialCount) {
+            throw new Exception('User not found');
+        }
+        
+        JsonHandler::writeJson(self::$usersFile, ['users' => array_values($users)]);
         return true;
     }
     
-    /**
-     * Change user status
-     * @param int $id User ID
-     * @param string $status New status (active/blocked)
-     * @return array Updated user
-     * @throws Exception If invalid status or user not found
-     */
-    public static function changeStatus($id, $status) {
-        if (!in_array($status, ['active', 'blocked'])) {
-            throw new Exception('Invalid status');
-        }
-        
-        $users = self::getAll();
-        foreach ($users as &$user) {
-            if ($user['id'] == $id) {
-                $user['status'] = $status;
-                JsonHandler::writeJson('users.json', ['users' => $users]);
-                return $user;
-            }
-        }
-        throw new Exception('User not found');
-    }
-    
-    /**
-     * Change user role
-     * @param int $id User ID
-     * @param string $role New role (admin/user)
-     * @return array Updated user
-     * @throws Exception If invalid role or user not found
-     */
-    public static function changeRole($id, $role) {
-        if (!in_array($role, ['admin', 'user'])) {
-            throw new Exception('Invalid role');
-        }
-        
-        $users = self::getAll();
-        foreach ($users as &$user) {
-            if ($user['id'] == $id) {
-                $user['role'] = $role;
-                JsonHandler::writeJson('users.json', ['users' => $users]);
-                return $user;
-            }
-        }
-        throw new Exception('User not found');
-    }
-    
-    /**
-     * Verify user credentials
-     * @param string $email User email
-     * @param string $password User password
-     * @return array|null User data if valid, null otherwise
-     */
     public static function verifyCredentials($email, $password) {
-        $user = self::getByEmail($email);
-        if ($user && password_verify($password, $user['password'])) {
+        $user = self::getByEmail($email, true);
+        if ($user && $user['password'] === $password) { // Compare plaintext passwords
+            unset($user['password']);
             return $user;
         }
         return null;
+    }
+    
+    public static function changeStatus($id, $status) {
+        $validStatuses = ['active', 'blocked'];
+        if (!in_array($status, $validStatuses)) {
+            throw new Exception('Status must be: ' . implode(', ', $validStatuses));
+        }
+        
+        return self::update($id, ['status' => $status]);
+    }
+    
+    public static function changeRole($id, $role) {
+        $validRoles = ['admin', 'client']; // Only these two roles are valid now
+        if (!in_array($role, $validRoles)) {
+            throw new Exception('Role must be: ' . implode(', ', $validRoles));
+        }
+        
+        return self::update($id, ['role' => $role]);
     }
 }
 ?>

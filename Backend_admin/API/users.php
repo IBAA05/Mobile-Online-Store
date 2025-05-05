@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../controllers/UserController.php';
+require_once __DIR__ . '/../controllers/AuthController.php';
 
 $controller = new UserController();
 $method = $_SERVER['REQUEST_METHOD'];
@@ -10,33 +11,62 @@ $uri = explode('/', $uri);
 $userId = isset($uri[3]) ? $uri[3] : null;
 $action = isset($uri[4]) ? $uri[4] : null;
 
+// Authentication logic
+try {
+    // For viewing a single user profile, only require authentication
+    if ($method === 'GET' && $userId && !$action) {
+        AuthController::authenticate();
+    } 
+    // For all other routes, require admin privileges
+    else {
+        AuthController::authenticate('admin');
+    }
+} catch (Exception $e) {
+    http_response_code($e->getCode() ?: 401);
+    echo json_encode(['error' => $e->getMessage()]);
+    exit;
+}
+
+// Route handling
 switch ($method) {
     case 'GET':
-        if ($userId) {
+        if ($userId && !$action) {
             $controller->getUser($userId);
-        } else {
+        } else if (!$userId && !$action) {
             $controller->getAllUsers();
+        } else {
+            http_response_code(400);
+            echo json_encode(['error' => 'Invalid request']);
         }
         break;
+        
     case 'POST':
-        $controller->createUser();
+        if (!$userId && !$action) {
+            $controller->createUser();
+        } else {
+            http_response_code(400);
+            echo json_encode(['error' => 'Invalid request']);
+        }
         break;
+        
     case 'PUT':
-        if ($userId) {
+        if ($userId && !$action) {
             $controller->updateUser($userId);
         } else {
             http_response_code(400);
             echo json_encode(['error' => 'User ID required']);
         }
         break;
+        
     case 'DELETE':
-        if ($userId) {
+        if ($userId && !$action) {
             $controller->deleteUser($userId);
         } else {
             http_response_code(400);
             echo json_encode(['error' => 'User ID required']);
         }
         break;
+        
     case 'PATCH':
         if ($userId && $action === 'status') {
             $controller->changeUserStatus($userId);
@@ -47,9 +77,9 @@ switch ($method) {
             echo json_encode(['error' => 'Invalid action']);
         }
         break;
+        
     default:
         http_response_code(405);
         echo json_encode(['error' => 'Method not allowed']);
         break;
 }
-?>

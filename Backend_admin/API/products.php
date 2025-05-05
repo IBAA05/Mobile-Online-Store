@@ -1,5 +1,11 @@
 <?php
 require_once __DIR__ . '/../controllers/ProductController.php';
+// For any authenticated user
+require_once __DIR__ . '/../controllers/AuthController.php';
+AuthController::authenticate();
+
+// For admin-only routes
+AuthController::authenticate('admin');
 
 $controller = new ProductController();
 $method = $_SERVER['REQUEST_METHOD'];

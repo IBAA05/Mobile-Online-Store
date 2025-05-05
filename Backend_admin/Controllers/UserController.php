@@ -1,16 +1,16 @@
 <?php
 require_once __DIR__ . '/../models/User.php';
-require_once __DIR__ . '/../utils/Middleware.php';
+require_once __DIR__ . '/../controllers/AuthController.php';
 
 class UserController {
     public function getAllUsers() {
-        Middleware::authenticate('admin');
+        AuthController::authenticate('admin');
         header('Content-Type: application/json');
         echo json_encode(User::getAll());
     }
     
     public function getUser($id) {
-        $auth = Middleware::authenticate();
+        $auth = AuthController::authenticate();
         // Users can only view their own profile unless admin
         if ($auth['id'] != $id && $auth['role'] !== 'admin') {
             http_response_code(403);
@@ -53,7 +53,7 @@ class UserController {
     }
     
     public function updateUser($id) {
-        $auth = Middleware::authenticate();
+        $auth = AuthController::authenticate();
         // Users can only update their own profile unless admin
         if ($auth['id'] != $id && $auth['role'] !== 'admin') {
             http_response_code(403);
@@ -77,7 +77,7 @@ class UserController {
     }
     
     public function deleteUser($id) {
-        Middleware::authenticate('admin');
+        AuthController::authenticate('admin');
         header('Content-Type: application/json');
         try {
             User::delete($id);
@@ -89,7 +89,7 @@ class UserController {
     }
     
     public function changeUserStatus($id) {
-        Middleware::authenticate('admin');
+        AuthController::authenticate('admin');
         header('Content-Type: application/json');
         try {
             $input = json_decode(file_get_contents('php://input'), true);
@@ -106,7 +106,7 @@ class UserController {
     }
     
     public function changeUserRole($id) {
-        Middleware::authenticate('admin');
+        AuthController::authenticate('admin');
         header('Content-Type: application/json');
         try {
             $input = json_decode(file_get_contents('php://input'), true);

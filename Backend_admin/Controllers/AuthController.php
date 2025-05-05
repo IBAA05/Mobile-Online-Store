@@ -1,74 +1,67 @@
 <?php
-require_once __DIR__ . '/../models/User.php';
-require_once __DIR__ . '/../utils/JwtHandler.php';
+require_once __DIR__ . '/../Models/Auth.php';
+require_once __DIR__ . '/../Models/User.php';
 
 class AuthController {
     public function login() {
         header('Content-Type: application/json');
-        $input = json_decode(file_get_contents('php://input'), true);
-        
-        if (empty($input['email']) || empty($input['password'])) {
-            http_response_code(400);
-            echo json_encode(['error' => 'Email and password are required']);
-            return;
-        }
-
-        $user = User::verifyCredentials($input['email'], $input['password']);
-        if (!$user) {
-            http_response_code(401);
-            echo json_encode(['error' => 'Invalid credentials']);
-            return;
-        }
-
-        if ($user['status'] !== 'active') {
-            http_response_code(403);
-            echo json_encode(['error' => 'Account is blocked']);
-            return;
-        }
-
-        $jwt = JwtHandler::generate([
-            'id' => $user['id'],
-            'email' => $user['email'],
-            'role' => $user['role']
-        ]);
-
-        // Don't return password hash
-        unset($user['password']);
-
-        echo json_encode([
-            'token' => $jwt,
-            'user' => $user
-        ]);
-    }
-
-    public function signup() {
-        header('Content-Type: application/json');
-        $input = json_decode(file_get_contents('php://input'), true);
         
         try {
-            $input['role'] = 'user'; // Force user role for signups
-            $input['status'] = 'active';
+            $input = json_decode(file_get_contents('php://input'), true);
             
-            $newUser = User::create($input);
-            
-            // Generate token for immediate login
-            $jwt = JwtHandler::generate([
-                'id' => $newUser['id'],
-                'email' => $newUser['email'],
-                'role' => $newUser['role']
-            ]);
-            
-            // Don't return password hash
-            unset($newUser['password']);
+            if (empty($input['email']) || empty($input['password'])) {
+                throw new Exception('Email and password are required');
+            }
 
-            http_response_code(201);
+            $user = Auth::login($input['email'], $input['password']);
             echo json_encode([
-                'token' => $jwt,
-                'user' => $newUser
+                'message' => 'Login successful',
+                'user' => $user
             ]);
         } catch (Exception $e) {
-            http_response_code(400);
+            http_response_code(401);
             echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function logout() {
+        header('Content-Type: application/json');
+        try {
+            Auth::logout();
+            echo json_encode(['message' => 'Logged out successfully']);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function checkAuth() {
+        header('Content-Type: application/json');
+        try {
+            $user = Auth::check();
+            echo json_encode([
+                'authenticated' => true,
+                'user' => $user
+            ]);
+        } catch (Exception $e) {
+            http_response_code(401);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
+
+    public static function authenticate($requiredRole = null) {
+        try {
+            $user = Auth::check();
+            
+            if ($requiredRole && $user['role'] !== $requiredRole) {
+                throw new Exception('Insufficient permissions');
+            }
+            
+            return $user;
+        } catch (Exception $e) {
+            http_response_code($e->getMessage() === 'Insufficient permissions' ? 403 : 401);
+            echo json_encode(['error' => $e->getMessage()]);
+            exit;
         }
     }
 }
