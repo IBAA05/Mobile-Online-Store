@@ -14,7 +14,7 @@
       "email": "def@gmail.com",
       "password": "def123",
       "role": "client",
-      "status": "blocked",
+      "status": "active",
       "updated_at": "2025-05-05 15:15:38"
     },
     {

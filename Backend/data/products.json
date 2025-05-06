@@ -8,7 +8,7 @@
             "price": 50000,
             "discount": 12,
             "images": [
-                "images\/iphone16pro-removebg-preview.png"
+                "images\/iPhone16ProMax.png"
             ],
             "variants": [
                 {
@@ -35,7 +35,7 @@
             "category": "smartphones",
             "discount": 8,
             "images": [
-                "images\/iphone16pro-removebg-preview.png"
+                "images\/GalaxyS24Ultra.png"
             ],
             "variants": [
                 {
@@ -62,7 +62,7 @@
             "category": "smartphones",
             "discount": 5,
             "images": [
-                "images\/iphone16pro-removebg-preview.png"
+                "images\/Pixel9Pro.png"
             ],
             "variants": [
                 {
@@ -89,7 +89,7 @@
             "category": "smartphones",
             "discount": 12,
             "images": [
-                "images\/iphone16pro-removebg-preview.png"
+                "images\/OnePlus12.png"
             ],
             "variants": [
                 {
@@ -116,7 +116,7 @@
             "category": "smartphones",
             "discount": 15,
             "images": [
-                "images\/iphone16pro-removebg-preview.png"
+                "images\/Xiaomi14Pro.png"
             ],
             "variants": [
                 {
@@ -144,7 +144,7 @@
             "price": 220000,
             "discount": 10,
             "images": [
-                "images\/macbook-pro.png"
+                "images\/MacBookPro16.png"
             ],
             "variants": [
                 {
@@ -169,7 +169,7 @@
             "price": 180000,
             "discount": 8,
             "images": [
-                "images\/dell-xps.png"
+                "images\/DellXPS15.png"
             ],
             "variants": [
                 {
@@ -194,7 +194,7 @@
             "price": 25000,
             "discount": 5,
             "images": [
-                "images\/airpods-pro.png"
+                "images\/AirPodsPro2.png"
             ],
             "variants": [
                 {
@@ -217,7 +217,7 @@
             "price": 5000,
             "discount": 15,
             "images": [
-                "images\/wireless-charger.png"
+                "images\/SamsungWirelessCharger.png"
             ],
             "variants": [
                 {
@@ -240,7 +240,7 @@
             "price": 12000,
             "discount": 10,
             "images": [
-                "images\/mx-master.png"
+                "images\/LogitechMX3.png"
             ],
             "variants": [
                 {

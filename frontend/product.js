@@ -1,12 +1,9 @@
 document.addEventListener("DOMContentLoaded", async function () {
   // Get DOM elements
   const productContainer = document.querySelector(".products-container");
-  const brandCheckboxes = document.querySelectorAll(
-    '.sidebar input[type="checkbox"]'
-  );
-  const mainSearchInput = document.querySelector(
-    '.search-bar input[type="text"]'
-  );
+  const brandCheckboxes = document.querySelectorAll('.sidebar input[type="checkbox"][name="brand"]');
+  const categoryCheckboxes = document.querySelectorAll('.sidebar input[type="checkbox"][name="category"]');
+  const mainSearchInput = document.querySelector('.search-bar input[type="text"]');
 
   let products = [];
   let filteredProducts = [];
@@ -14,141 +11,99 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Function to fetch products from API
   async function fetchProducts() {
     try {
-      const response = await fetch("http://127.0.0.1:8080/api/products.php", {
+      const response = await fetch("http://localhost:8080/api/products.php", {
         method: "GET",
-        credentials: "include",
+        credentials: "include", // Only needed if using cookies/sessions
         headers: {
           "Content-Type": "application/json",
         },
       });
-
+  
+      console.log("Response status:", response.status); // Add this for debugging
+      
       if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          // Only redirect for auth errors if not already on products page
-          if (!window.location.pathname.includes("products.html")) {
-            window.location.href = "login.html";
-          }
-          return [];
-        }
-        throw new Error("Network response was not ok");
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-
+      
       const data = await response.json();
+      console.log("Received data:", data); // Debug what you received
       return data;
+      
     } catch (error) {
-      console.error("Error fetching products:", error);
-      productContainer.innerHTML =
-        '<p class="no-results">Error loading products. Please try again later.</p>';
+      console.error("Full fetch error:", error);
+      productContainer.innerHTML = `
+        <p class="no-results">
+          Failed to load products. Technical details:<br>
+          ${error.message}<br>
+          Please check console for more information
+        </p>`;
       return [];
     }
   }
-
+  // Initial fetch and render
   try {
     products = await fetchProducts();
     filteredProducts = [...products];
     renderProducts(products);
   } catch (error) {
     console.error("Error initializing products:", error);
-    productContainer.innerHTML =
-      '<p class="no-results">Error loading products. Please try again later.</p>';
+    productContainer.innerHTML = '<p class="no-results">Error loading products. Please try again later.</p>';
   }
 
-  // Function to render products dynamically
+  // Function to render products
   function renderProducts(productsToRender) {
-    productContainer.innerHTML = "";
-
-    if (!productsToRender || productsToRender.length === 0) {
-      productContainer.innerHTML =
-        '<p class="no-results">No products found matching your criteria.</p>';
-      return;
-    }
-
-    productsToRender.forEach((product) => {
-      const productBox = document.createElement("div");
-      productBox.className = "box";
-
-      // Add discount badge if applicable
-      if (product.discount) {
-        const discountBadge = document.createElement("span");
-        discountBadge.className = "discount";
-        discountBadge.textContent =
-          product.discount > 0 ? `${product.discount}% Off` : "New";
-        productBox.appendChild(discountBadge);
-      }
-
-      // Add product image
-      const img = document.createElement("img");
-      img.src =
-        product.images && product.images[0]
-          ? product.images[0]
-          : "images/placeholder.png";
-      img.alt = product.title || "Product image";
-      productBox.appendChild(img);
-
-      // Add product title
-      const titleSpan = document.createElement("span");
-      titleSpan.textContent = product.title || "Unknown Product";
-      productBox.appendChild(titleSpan);
-
-      // Add storage info if available
-      if (product.properties && product.properties.storage) {
-        const storageH2 = document.createElement("h2");
-        storageH2.textContent = `(${product.properties.storage})`;
-        productBox.appendChild(storageH2);
-      }
-
-      // Add price
-      const priceDiv = document.createElement("h3");
-      priceDiv.className = "price";
-
-      if (product.price) {
-        if (product.discount) {
-          const discountedPrice = product.price * (1 - product.discount / 100);
-          priceDiv.innerHTML = `
-                        <span style="text-decoration: line-through; color: #868a92; font-size: 0.9rem;">
-                            ${product.price.toFixed(2)} DZD
-                        </span>
-                        ${discountedPrice.toFixed(2)} DZD
-                    `;
-        } else {
-          priceDiv.textContent = `${product.price.toFixed(2)} DZD`;
-        }
-      } else {
-        priceDiv.textContent = "Price not available";
-      }
-      productBox.appendChild(priceDiv);
-
-      // Add heart icon
-      const heartIcon = document.createElement("i");
-      heartIcon.className = "bx bx-heart";
-      productBox.appendChild(heartIcon);
-
-      // Add shop now button
-      const shopBtn = document.createElement("a");
-      shopBtn.href = `details.html?id=${product.id || ""}`;
-      shopBtn.className = "btn";
-      shopBtn.textContent = "Shop Now";
-      productBox.appendChild(shopBtn);
-
-      productContainer.appendChild(productBox);
-    });
+    // ... (keep existing renderProducts implementation the same)
   }
 
   // Filter products by brand
   function filterByBrand() {
     const selectedBrands = Array.from(brandCheckboxes)
       .filter((checkbox) => checkbox.checked)
-      .map(
-        (checkbox) => checkbox.parentElement.textContent.trim().split(" ")[0]
-      );
+      .map((checkbox) => checkbox.value);
 
     if (selectedBrands.length === 0) {
-      filteredProducts = [...products]; // Show all products if no brands are selected
+      filteredProducts = [...products];
     } else {
       filteredProducts = products.filter((product) =>
         selectedBrands.includes(product.brand)
       );
     }
+
+    renderProducts(filteredProducts);
+  }
+
+  // Filter products by category
+  function filterByCategory() {
+    const selectedCategories = Array.from(categoryCheckboxes)
+      .filter((checkbox) => checkbox.checked)
+      .map((checkbox) => checkbox.value);
+
+    if (selectedCategories.length === 0) {
+      filteredProducts = [...products];
+    } else {
+      filteredProducts = products.filter((product) =>
+        selectedCategories.includes(product.category)
+      );
+    }
+
+    renderProducts(filteredProducts);
+  }
+
+  // Combined filter function
+  function applyFilters() {
+    const selectedBrands = Array.from(brandCheckboxes)
+      .filter((checkbox) => checkbox.checked)
+      .map((checkbox) => checkbox.value);
+
+    const selectedCategories = Array.from(categoryCheckboxes)
+      .filter((checkbox) => checkbox.checked)
+      .map((checkbox) => checkbox.value);
+
+    filteredProducts = products.filter((product) => {
+      const brandMatch = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
+      const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(product.category);
+      return brandMatch && categoryMatch;
+    });
 
     renderProducts(filteredProducts);
   }
@@ -166,11 +121,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Event listeners
   brandCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", filterByBrand);
+    checkbox.addEventListener("change", applyFilters);
+  });
+
+  categoryCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", applyFilters);
   });
 
   mainSearchInput.addEventListener("input", filterBySearch);
-
-  // Initial render
-  renderProducts(products);
 });
