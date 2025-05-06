@@ -11,34 +11,43 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Function to fetch products from API
   async function fetchProducts() {
     try {
-      const response = await fetch("http://localhost:8080/api/products.php", {
+      const response = await fetch("http://127.0.0.1:8080/api/products.php", {
         method: "GET",
-        credentials: "include", // Only needed if using cookies/sessions
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
       });
-  
-      console.log("Response status:", response.status); // Add this for debugging
-      
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        if (response.status === 401 || response.status === 403) {
+          // Only redirect for auth errors if not already on products page
+          if (!window.location.pathname.includes("products.html")) {
+            window.location.href = "login.html";
+          }
+          return [];
+        }
+        throw new Error("Network response was not ok");
       }
-      
+
       const data = await response.json();
-      console.log("Received data:", data); // Debug what you received
       return data;
-      
     } catch (error) {
-      console.error("Full fetch error:", error);
-      productContainer.innerHTML = `
-        <p class="no-results">
-          Failed to load products. Technical details:<br>
-          ${error.message}<br>
-          Please check console for more information
-        </p>`;
+      console.error("Error fetching products:", error);
+      productContainer.innerHTML =
+        '<p class="no-results">Error loading products. Please try again later.</p>';
       return [];
     }
+  }
+
+  try {
+    products = await fetchProducts();
+    filteredProducts = [...products];
+    renderProducts(products);
+  } catch (error) {
+    console.error("Error initializing products:", error);
+    productContainer.innerHTML =
+      '<p class="no-results">Error loading products. Please try again later.</p>';
   }
   // Initial fetch and render
   try {
