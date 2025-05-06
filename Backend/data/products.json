@@ -4,6 +4,7 @@
             "id": 1,
             "title": "iPhone 16 Pro Max (Updated)",
             "brand": "Apple",
+            "category": "smartphones",
             "price": 50000,
             "discount": 12,
             "images": [
@@ -31,6 +32,7 @@
             "id": 2,
             "title": "Galaxy S24 Ultra",
             "brand": "Samsung",
+            "category": "smartphones",
             "discount": 8,
             "images": [
                 "images\/iphone16pro-removebg-preview.png"
@@ -57,6 +59,7 @@
             "id": 3,
             "title": "Pixel 9 Pro",
             "brand": "Google",
+            "category": "smartphones",
             "discount": 5,
             "images": [
                 "images\/iphone16pro-removebg-preview.png"
@@ -83,6 +86,7 @@
             "id": 4,
             "title": "OnePlus 12",
             "brand": "OnePlus",
+            "category": "smartphones",
             "discount": 12,
             "images": [
                 "images\/iphone16pro-removebg-preview.png"
@@ -109,6 +113,7 @@
             "id": 5,
             "title": "Xiaomi 14 Pro",
             "brand": "Xiaomi",
+            "category": "smartphones",
             "discount": 15,
             "images": [
                 "images\/iphone16pro-removebg-preview.png"
@@ -130,6 +135,126 @@
                     "stock": 20
                 }
             ]
+        },
+        {
+            "id": 6,
+            "title": "MacBook Pro 16\" M3",
+            "brand": "Apple",
+            "category": "laptops",
+            "price": 220000,
+            "discount": 10,
+            "images": [
+                "images\/macbook-pro.png"
+            ],
+            "variants": [
+                {
+                    "storage": "512GB",
+                    "memory": "16GB",
+                    "price": 220000,
+                    "stock": 8
+                },
+                {
+                    "storage": "1TB",
+                    "memory": "32GB",
+                    "price": 280000,
+                    "stock": 5
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Dell XPS 15",
+            "brand": "Dell",
+            "category": "laptops",
+            "price": 180000,
+            "discount": 8,
+            "images": [
+                "images\/dell-xps.png"
+            ],
+            "variants": [
+                {
+                    "storage": "512GB",
+                    "memory": "16GB",
+                    "price": 180000,
+                    "stock": 12
+                },
+                {
+                    "storage": "1TB",
+                    "memory": "32GB",
+                    "price": 220000,
+                    "stock": 7
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "title": "AirPods Pro 2",
+            "brand": "Apple",
+            "category": "accessories",
+            "price": 25000,
+            "discount": 5,
+            "images": [
+                "images\/airpods-pro.png"
+            ],
+            "variants": [
+                {
+                    "color": "White",
+                    "price": 25000,
+                    "stock": 25
+                },
+                {
+                    "color": "Black",
+                    "price": 26000,
+                    "stock": 15
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "title": "Samsung Wireless Charger",
+            "brand": "Samsung",
+            "category": "accessories",
+            "price": 5000,
+            "discount": 15,
+            "images": [
+                "images\/wireless-charger.png"
+            ],
+            "variants": [
+                {
+                    "color": "Black",
+                    "price": 5000,
+                    "stock": 30
+                },
+                {
+                    "color": "White",
+                    "price": 5000,
+                    "stock": 20
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "title": "Logitech MX Master 3",
+            "brand": "Logitech",
+            "category": "accessories",
+            "price": 12000,
+            "discount": 10,
+            "images": [
+                "images\/mx-master.png"
+            ],
+            "variants": [
+                {
+                    "color": "Graphite",
+                    "price": 12000,
+                    "stock": 18
+                },
+                {
+                    "color": "Pale Grey",
+                    "price": 12000,
+                    "stock": 12
+                }
+            ]
         }
-    ]
+    ],
+    "categories": ["smartphones", "laptops", "accessories", "tablets"]
 }
