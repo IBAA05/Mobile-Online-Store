@@ -75,18 +75,45 @@ function displayOrders(orders) {
   const ordersList = document.getElementById("orders-list");
   if (!ordersList) return;
 
-  ordersList.innerHTML = orders
-    .map(
-      (order) => `
-    <div class="order-item">
-      <h3>Order #${order.id}</h3>
-      <p>Status: ${order.status}</p>
-      <p>Total: $${order.total.toFixed(2)}</p>
-      <p>Date: ${order.date}</p>
+  ordersList.innerHTML = `
+    <div class="orders-list">
+      ${orders
+        .map(
+          (order) => `
+        <div class="order-item">
+          <h3>Order #${order.id}</h3>
+          <p class="status ${getStatusClass(order.status)}">${order.status}</p>
+          <p class="total">Total: $${order.total.toFixed(2)}</p>
+          <p class="order-date">Ordered on: ${formatDate(order.date)}</p>
+        </div>
+      `
+        )
+        .join("")}
     </div>
-  `
-    )
-    .join("");
+  `;
+}
+
+function getStatusClass(status) {
+  switch (status.toLowerCase()) {
+    case "pending":
+      return "status-pending";
+    case "completed":
+      return "status-completed";
+    case "cancelled":
+      return "status-cancelled";
+    default:
+      return "";
+  }
+}
+
+function formatDate(dateString) {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 }
 
 function addToCart(product) {

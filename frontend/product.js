@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Function to fetch products from API
   async function fetchProducts() {
     try {
-      const response = await fetch("http://localhost:8080/api/products.php", {
+      const response = await fetch("http://127.0.0.1:8080/api/products.php", {
         method: "GET",
         credentials: "include",
         headers: {
@@ -23,8 +23,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       });
 
       if (!response.ok) {
-        if (response.status === 401) {
-          window.location.href = "login.html";
+        if (response.status === 401 || response.status === 403) {
+          // Only redirect for auth errors if not already on products page
+          if (!window.location.pathname.includes("products.html")) {
+            window.location.href = "login.html";
+          }
           return [];
         }
         throw new Error("Network response was not ok");

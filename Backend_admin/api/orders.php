@@ -19,8 +19,6 @@ header('Content-Type: application/json');
 
 AuthController::authenticate();
 
-// For admin-only routes
-AuthController::authenticate('admin');
 
 $controller = new OrderController();
 $method = $_SERVER['REQUEST_METHOD'];
