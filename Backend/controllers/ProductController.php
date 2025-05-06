@@ -95,7 +95,7 @@ class ProductController {
     }
     
     /**
-     * Filter products by brand, price range, or discount
+     * Filter products by brand, price range, discount, or category
      */
     public function filterProducts() {
         header('Content-Type: application/json');
@@ -129,6 +129,11 @@ class ProductController {
             }
             
             if (isset($filters['maxDiscount']) && $productDiscount > $filters['maxDiscount']) {
+                $match = false;
+            }
+            
+            // Filter by category
+            if (isset($filters['category']) && $product['category'] != $filters['category']) {
                 $match = false;
             }
             
