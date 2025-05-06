@@ -8,12 +8,21 @@ const cancelBtn = document.getElementById("cancelBtn");
 const saveProductBtn = document.getElementById("saveProductBtn");
 const addProductForm = document.getElementById("addProductForm");
 
-// Fetch products from JSON
+import CONFIG from "./config.js";
+
 async function fetchProducts() {
   try {
-    const response = await fetch("data/products.json");
+    const response = await fetch(`${CONFIG.API_URL}/products`, {
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const data = await response.json();
-    return data.products;
+    return data;
   } catch (error) {
     console.error("Error fetching products:", error);
     return [];
@@ -130,7 +139,6 @@ saveProductBtn.addEventListener("click", async () => {
   }
 
   const newProduct = {
-    id: Date.now(),
     name: document.getElementById("productName").value,
     brand: document.getElementById("productBrand").value,
     category: document.getElementById("productCategory").value,
@@ -140,10 +148,26 @@ saveProductBtn.addEventListener("click", async () => {
     images: [document.getElementById("productImage").value],
   };
 
-  const products = await fetchProducts();
-  products.push(newProduct);
-  renderProducts(products);
-  closeModal();
+  try {
+    const response = await fetch("http://localhost:3000/api/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const products = await fetchProducts();
+    renderProducts(products);
+    closeModal();
+  } catch (error) {
+    console.error("Error adding product:", error);
+    alert("Failed to add product. Please try again.");
+  }
 });
 
 initializePage();

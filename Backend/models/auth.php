@@ -17,6 +17,14 @@ class Auth {
             throw new Exception('Invalid credentials');
         }
 
+        if ($user['status'] === 'blocked') {
+            throw new Exception('Account is blocked');
+        }
+
+        if ($user['role'] !== 'admin') {
+            throw new Exception('Insufficient permissions');
+        }
+
         $_SESSION['user'] = [
             'id' => $user['id'],
             'name' => $user['name'],
