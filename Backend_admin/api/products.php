@@ -1,11 +1,28 @@
 <?php
 require_once __DIR__ . '/../controllers/ProductController.php';
-// For any authenticated user
 require_once __DIR__ . '/../controllers/AuthController.php';
-AuthController::authenticate();
 
-// For admin-only routes
-AuthController::authenticate('admin');
+// Update CORS headers to handle credentials properly
+header('Access-Control-Allow-Origin: http://localhost:5501'); // Replace with your frontend origin
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+header('Content-Type: application/json');
+
+// Single authentication check based on role
+try {
+    AuthController::authenticate('admin');
+} catch (Exception $e) {
+    http_response_code(403);
+    echo json_encode(['error' => 'Unauthorized access']);
+    exit();
+}
 
 $controller = new ProductController();
 $method = $_SERVER['REQUEST_METHOD'];

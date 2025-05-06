@@ -1,5 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+const API_BASE_URL = "http://localhost:8080/api";
+
+document.addEventListener("DOMContentLoaded", async () => {
   loadCart();
+  const orders = await fetchOrders();
+  displayOrders(orders);
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -37,6 +41,53 @@ document.addEventListener("DOMContentLoaded", function () {
     addToCart(product);
   });
 });
+
+async function createOrder(orderData) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/orders.php`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderData),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error("Error creating order:", error);
+    throw error;
+  }
+}
+
+async function fetchOrders() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/orders.php`, {
+      credentials: "include",
+    });
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    return [];
+  }
+}
+
+function displayOrders(orders) {
+  const ordersList = document.getElementById("orders-list");
+  if (!ordersList) return;
+
+  ordersList.innerHTML = orders
+    .map(
+      (order) => `
+    <div class="order-item">
+      <h3>Order #${order.id}</h3>
+      <p>Status: ${order.status}</p>
+      <p>Total: $${order.total.toFixed(2)}</p>
+      <p>Date: ${order.date}</p>
+    </div>
+  `
+    )
+    .join("");
+}
 
 function addToCart(product) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -160,12 +211,33 @@ function updateOrderSummary(cart) {
   document.getElementById("total").textContent = `$${total.toFixed(2)}`;
 }
 
-document.querySelector(".checkout-btn").addEventListener("click", () => {
+document.querySelector(".checkout-btn").addEventListener("click", async () => {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   if (cart.length === 0) {
     alert("Your cart is empty!");
     return;
   }
-  // Add checkout logic here
-  alert("Proceeding to checkout...");
+
+  const orderData = {
+    customer: {
+      name: "Guest Customer", // You might want to get this from a form
+      email: "guest@example.com", // You might want to get this from a form
+    },
+    items: cart.map((item) => ({
+      product_id: item.id,
+      quantity: item.quantity,
+      price: item.price,
+    })),
+  };
+
+  try {
+    const order = await createOrder(orderData);
+    localStorage.removeItem("cart"); // Clear cart after successful order
+    alert("Order placed successfully!");
+    loadCart(); // Refresh cart display
+    const orders = await fetchOrders(); // Fetch and display orders
+    displayOrders(orders);
+  } catch (error) {
+    alert("Failed to place order. Please try again.");
+  }
 });

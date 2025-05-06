@@ -1,5 +1,8 @@
 <?php
 $request = $_SERVER['REQUEST_URI'];
+header('Access-Control-Allow-Origin: *'); 
+header('Accesss-Control-Allow-Headers: Content-Type'); // Allow specific headers for CORS
+
 
 switch ($request) {
     case '/api/products':

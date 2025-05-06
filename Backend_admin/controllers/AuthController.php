@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../Models/Auth.php';
-require_once __DIR__ . '/../Models/User.php';
+require_once __DIR__ . '/../models/auth.php';
+require_once __DIR__ . '/../models/user.php';
 
 class AuthController {
     public function login() {
