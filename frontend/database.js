@@ -2,7 +2,7 @@ const db = {
     admins: [
         {
             id: 1,
-            name: "Seyf eddine",
+            name: "user1",
             email: "admin@example.com",
             password: "admin123",
             status: "active",
@@ -11,7 +11,7 @@ const db = {
         },
         {
             id: 2,
-            name: "Wail nedjar",
+            name: "user2",
             email: "wail@example.com",
             password: "secure456",
             status: "active",
@@ -20,7 +20,7 @@ const db = {
         },
         {
             id: 3,
-            name: "Mounder dehdouh",
+            name: "user3",
             email: "mounder@example.com",
             password: "test123",
             status: "blocked",
