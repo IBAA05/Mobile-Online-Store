@@ -20,16 +20,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode('/', $uri);
 $productId = isset($uri[3]) ? $uri[3] : null;
 
-// Only authenticate for non-GET requests
-if ($method !== 'GET') {
-    try {
-        AuthController::authenticate();
-    } catch (Exception $e) {
-        http_response_code(401);
-        echo json_encode(['error' => 'Unauthorized access']);
-        exit();
-    }
-}
+
 
 $controller = new ProductController();
 

@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../controllers/UserController.php';
 require_once __DIR__ . '/../controllers/AuthController.php';
 
-header('Access-Control-Allow-Origin: http://127.0.0.1:5501');  // Modified to match frontend origin exactly
+header('Access-Control-Allow-Origin: http://127.0.0.1:5501');  
 header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
@@ -36,7 +36,7 @@ try {
     }
 } catch (Exception $e) {
     http_response_code($e->getCode() ?: 401);
-    echo json_encode(['error' => $e->getMessage()]);
+    echo json_encode(['er' => $e->getMessage()]);
     exit;
 }
 
@@ -65,9 +65,11 @@ switch ($method) {
     case 'PUT':
         if ($userId && !$action) {
             $controller->updateUser($userId);
+        } else if ($userId && $action === 'role') { // Added condition for role action
+            $controller->changeUserRole($userId);
         } else {
             http_response_code(400);
-            echo json_encode(['error' => 'User ID required']);
+            echo json_encode(['error' => 'Invalid request']);
         }
         break;
         
@@ -81,9 +83,12 @@ switch ($method) {
         break;
         
     case 'PATCH':
-        if ($userId && $action === 'status') {
+        if (!$userId) {
+            http_response_code(400);
+            echo json_encode(['error' => 'User ID required']);
+        } else if ($action === 'status') {
             $controller->changeUserStatus($userId);
-        } elseif ($userId && $action === 'role') {
+        } else if ($action === 'role') {
             $controller->changeUserRole($userId);
         } else {
             http_response_code(400);

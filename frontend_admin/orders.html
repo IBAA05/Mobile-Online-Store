@@ -102,14 +102,26 @@
             <h3>Add New Order</h3>
             <label for="customer-name">Customer Name:</label>
             <input type="text" id="customer-name" required />
+
+            <label for="customer-email">Customer Email:</label>
+            <input type="email" id="customer-email" required />
+
+            <label for="product-id">Product ID:</label>
+            <input type="number" id="product-id" required min="1" />
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" required min="1" />
+
             <label for="order-status">Order Status:</label>
             <select id="order-status" required>
               <option value="Pending">Pending</option>
               <option value="Shipped">Shipped</option>
               <option value="Delivered">Delivered</option>
             </select>
+
             <label for="order-total">Order Total:</label>
             <input type="text" id="order-total" required />
+
             <button type="submit" class="btn btn-primary">Add Order</button>
             <button
               type="button"
@@ -133,5 +145,38 @@
             .classList.add("hidden");
         });
     </script>
+    <!-- Status Update Modal -->
+    <div id="status-update-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Update Order Status</h3>
+        <form id="status-update-form">
+          <input type="hidden" id="update-order-id" />
+          <div class="form-group">
+            <label for="update-status">Status:</label>
+            <select id="update-status" required>
+              <option value="Pending">Pending</option>
+              <option value="Processing">Processing</option>
+              <option value="Shipped">Shipped</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="update-notes">Notes:</label>
+            <textarea id="update-notes" required></textarea>
+          </div>
+          <div class="modal-buttons">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              id="close-status-modal"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

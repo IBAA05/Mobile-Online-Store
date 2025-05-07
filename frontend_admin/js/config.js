@@ -1,6 +1,6 @@
 const CONFIG = {
-  BASE_URL: "http://localhost:8080",
-  API_URL: "http://localhost:8080/api",
+  BASE_URL: "http://127.0.0.1:8080",
+  API_URL: "http://127.0.0.1:8080/api",
 };
 
 export default CONFIG;

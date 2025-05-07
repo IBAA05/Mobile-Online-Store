@@ -26,6 +26,8 @@ class JsonHandler {
     }
     
     public static function writeJson($filename, $data) {
+        echo "Writing to file: $filename\n";
+        echo "Data: " . print_r($data, true) . "\n";
         $filepath = self::$dataPath . $filename;
         
         if (!is_dir(self::$dataPath)) {

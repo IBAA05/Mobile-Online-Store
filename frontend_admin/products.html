@@ -120,7 +120,7 @@
         <div class="modal-body">
           <form id="addProductForm">
             <div class="form-group">
-              <label class="form-label" for="productName">Product Name</label>
+              <label class="form-label" for="productName">Product Title</label>
               <input
                 type="text"
                 id="productName"
@@ -187,6 +187,40 @@
                 class="form-control"
                 required
               />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Variants</label>
+              <div id="variantsContainer">
+                <div class="variant-row">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Storage"
+                    name="storage[]"
+                    required
+                  />
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="Price"
+                    name="price[]"
+                    required
+                  />
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="Stock"
+                    name="stock[]"
+                    required
+                  />
+                  <button type="button" class="btn btn-danger remove-variant">
+                    Remove
+                  </button>
+                </div>
+              </div>
+              <button type="button" class="btn" id="addVariantBtn">
+                Add Variant
+              </button>
             </div>
           </form>
         </div>

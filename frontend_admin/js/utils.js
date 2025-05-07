@@ -22,24 +22,37 @@ export function showNotification(message, type = "success") {
 
 export function jsonToCsv(jsonData) {
   try {
-    // the headers of the csv file
-    const headers = Object.keys(jsonData[0]);
+    // Flatten the data structure
+    const flattenedData = jsonData.map((order) => ({
+      id: order.id,
+      customer_name: order.customer.name,
+      customer_email: order.customer.email,
+      date: order.date,
+      status: order.status,
+      total: order.total,
+    }));
 
-    const rows = jsonData.map((item) =>
-      headers.map((header) => item[header]).join(",")
+    // Get headers from flattened data
+    const headers = Object.keys(flattenedData[0]);
+
+    const rows = flattenedData.map((item) =>
+      headers
+        .map((header) => {
+          // Handle cases where the value might contain commas
+          const value = item[header]?.toString() || "";
+          return value.includes(",") ? `"${value}"` : value;
+        })
+        .join(",")
     );
 
     const csvContent = [headers.join(","), ...rows].join("\n");
-
     const blob = new Blob([csvContent], { type: "text/csv" });
-
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
     link.href = url;
-    link.download = "data.csv";
+    link.download = "orders.csv";
 
     link.click();
-
     URL.revokeObjectURL(url);
     return true;
   } catch (error) {
